@@ -1,0 +1,37 @@
+{
+  "name": "json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:dev": "webpack -d --watch",
+    "start": "node server/index.js",
+    "start:dev": "nodemon server/index.js -w server -w database-mysql"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Go-Tim/tracy-detail-desc-calendarsticky.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Go-Tim/tracy-detail-desc-calendarsticky/issues"
+  },
+  "homepage": "https://github.com/Go-Tim/tracy-detail-desc-calendarsticky#readme",
+  "dependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/preset-env": "^7.4.2",
+    "@babel/preset-react": "^7.0.0",
+    "axios": "^0.18.0",
+    "babel-loader": "^8.0.5",
+    "bluebird": "^3.5.3",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "jquery": "^3.2.1",
+    "mysql": "^2.14.1",
+    "react": "^16.8.5",
+    "react-dom": "^16.8.5",
+    "underscore": "^1.8.3",
+    "webpack": "^4.29.6"
+  }
+}
