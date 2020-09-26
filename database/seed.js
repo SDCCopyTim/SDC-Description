@@ -48,21 +48,11 @@ const getData = () => {
   camp.onArrival = `${onArrival[Math.floor(Math.random() * Math.floor(onArrival.length))]}`;
   camp.costs = `${costs[Math.floor(Math.random() * Math.floor(costs.length))]}`;
   camp.description = getData();
+  camp.review = getData();
+  camp.responses = Math.ceil(Math.random() * Math.ceil(200)) + " Responses";
+  camp.recommended = "+" + Math.ceil(Math.random() * Math.ceil(200));
   return camp;
   }
-  // camp.description = fs.readFileSync(('./paragraphs.txt'), 'utf8', (err, results) => {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     let resArr = results.toString().split('. ');
-  //     let parag = '';
-  //     for(let i = 1; i >=0; i--) {
-  //       // parag = parag + (`${resArr[(Math.random() * (resArr.length))]}`) + ". ";
-  //       parag = parag + resArr + '. ';
-  //     }
-  //     return parag;
-  //   }
-  // });
 
 const createCamps = () => {
   let campsArr = [];
@@ -75,7 +65,7 @@ const createCamps = () => {
 const insertMockData = function() {
   var campsArr = createCamps();
   campsArr.forEach((camp) => {
-    db.query(`INSERT INTO CampSites (States, Farms, Camps, minimumNights, acceptsBookings, checkIn, checkOut, onArrival, description, costs) VALUES ('${camp.States}', '${camp.Farms}', '${camp.Camps}',  '${camp.minimumNights}', '${camp.acceptsBookings}', '${camp.checkIn}', '${camp.checkOut}', '${camp.onArrival}', '${camp.description}', ${camp.costs})`)
+    db.query(`INSERT INTO CampSites (States, Farms, Camps, minimumNights, acceptsBookings, checkIn, checkOut, onArrival, description, costs, review, responses, recommended) VALUES ('${camp.States}', '${camp.Farms}', '${camp.Camps}',  '${camp.minimumNights}', '${camp.acceptsBookings}', '${camp.checkIn}', '${camp.checkOut}', '${camp.onArrival}', '${camp.description}', ${camp.costs}, '${camp.review}', '${camp.responses}', '${camp.recommended}')`)
   })
 };
 

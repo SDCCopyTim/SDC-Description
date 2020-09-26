@@ -15,5 +15,8 @@ CREATE TABLE CampSites(
   checkOut TEXT not Null,
   onArrival TEXT not Null,
   costs int not Null,
-  description LONGBLOB not Null
+  description TEXT (10000) not Null,
+  review TEXT (10000) not Null,
+  responses TEXT not Null,
+  recommended TEXT not Null
 );
