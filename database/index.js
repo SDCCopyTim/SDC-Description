@@ -1,14 +1,16 @@
 var mysql      = require('mysql');
-var connection = mysql.createConnection({
+var db = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : 'roootroot',
-  database : 'FEC'
+  database : 'FecGOTIM'
 });
 
-connection.connect();
+db.connect();
 
-connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
+db.query('SELECT 1 + 1 AS solution', function (error, results, fields) {
   if (error) throw error;
   console.log('The solution is: ', results[0].solution);
 });
+
+module.exports = db;
