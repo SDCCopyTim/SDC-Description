@@ -15,27 +15,34 @@ class App extends React.Component {
 
     return (
       <div id="MainContainer">
-      <div class="LeftModule">
-         <div class="TitleModule">
-           <h1>Title Module</h1>
-         </div>
-         <div class="DescriptionModule">
-           <h1>Description Module</h1>
-         </div>
-         <div class="AmenitiesEssentialsLodging">
-           <h1>Amentities Essentials Lodging</h1>
-         </div>
-         <div class="QuestionsModule">
-           <h1>Questions</h1>
-         </div>
-         <div class="Details">
-           <h1>Details</h1>
-         </div>
+        <div class="LeftModule">
+          <div class="TitleModule">
+            <ul class="nav">
+              <li><a href="#about">United States > </a></li>
+              <li><a href="#clients">Texas > </a></li>
+              <li><a href="#contact">Ardor Wood Farm</a></li>
+            </ul>
+            <div class="CampSite">
+              <h1>CampSite</h1>
+            </div>
+          </div>
+          <div class="DescriptionModule">
+            <h1>Description Module</h1>
+          </div>
+          <div class="AmenitiesEssentialsLodging">
+            <h1>Amentities Essentials Lodging</h1>
+          </div>
+          <div class="QuestionsModule">
+            <h1>Questions</h1>
+          </div>
+          <div class="Details">
+            <h1>Details</h1>
+          </div>
+        </div>
+        <div class="Calendar">
+          <h1>Calendar</h1>
+        </div>
       </div>
-         <div class="Calendar">
-           <h1>Calendar</h1>
-         </div>
-       </div>
     );
   };
 };

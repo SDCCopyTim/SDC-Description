@@ -14,6 +14,11 @@
   background-color: coral;
 }
 
+.CampSite{
+    font-size: 15px;
+  padding: 5px;
+}
+
 .DescriptionModule{
   background-color: lightblue;
 }
@@ -35,6 +40,20 @@
   float: right;
   width: 50%;
   margin: auto;
+}
+
+.nav {
+  background-color: yellow;
+  list-style-type: none;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+
+.nav li {
+  display: inline-block;
+  font-size: 10px;
+  padding: 10px;
 }
 
 
@@ -66,3 +85,4 @@
  position: relative;
  right: 90px;
 }
+
