@@ -40,4 +40,12 @@ class App extends React.Component {
   };
 };
 
+
+// <div class="container">
+//   <div class="circle" id="circle1"></div>
+//   <div class="circle" id="circle2"></div>
+//   <div class="circle" id="circle3"></div>
+//   <div class="circle" id="circle4"></div>
+// </div>
+
 export default App;
