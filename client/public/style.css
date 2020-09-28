@@ -1,0 +1,38 @@
+#MainContainer{
+  background-color: grey;
+  width: 1080;
+  margin: auto;
+}
+
+.LeftModule{
+  float: left;
+  width: 50%;
+  margin: auto;
+}
+
+.TitleModule{
+  background-color: coral;
+}
+
+.DescriptionModule{
+  background-color: lightblue;
+}
+
+.AmenitiesEssentialsLodging{
+  background-color: lightpink;
+}
+
+.QuestionsModule{
+  background-color: lightseagreen;
+}
+
+.Details{
+  background-color: lightgreen;
+}
+
+.Calendar{
+  background-color: burlywood;
+  float: right;
+  width: 50%;
+  margin: auto;
+}
