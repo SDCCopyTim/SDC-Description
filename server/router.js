@@ -3,7 +3,7 @@ const router = express.Router();
 const controllers = require('./controllers.js');
 
 router
-  .route('/:id')
+  .route('/one/:id')
   .get(controllers.getOne)
 
 router

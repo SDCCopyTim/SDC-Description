@@ -1,13 +1,14 @@
-#MainContainer{
-  background-color: grey;
-  width: 1080;
-  margin: auto;
+.MainContainer {
+  display: grid;
+  grid-template-columns: 720px 360px;
+  grid-template-rows: 1fr;
+  gap: 20px 20px;
+  justify-content: center;
+  grid-template-areas:
+    "LeftModule Calendar";
 }
-
 .LeftModule{
-  float: left;
-  width: 50%;
-  margin: auto;
+  grid-area: LeftModule;
 }
 
 .TitleModule{
@@ -16,17 +17,48 @@
 
 .CampSite{
     font-size: 15px;
-  padding: 5px;
+    padding: 5px;
+}
+.CampSite body{
+  font-size: 10px;
+  padding: 2px;
+}
+
+.Recommend{
+  list-style-type: none;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+
+.Recommend li{
+  display: inline-block;
+  font-size: 15px;
+  padding: 3px;
 }
 
 .DescriptionModule{
   background-color: lightblue;
 }
 
-.AmenitiesEssentialsLodging{
-  background-color: lightpink;
-}
+.AmentitiesEssentialsLodging{
+  display: grid;
+grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 1fr;
+  gap: 1px 1%;
+  grid-template-areas:
+    "Lodging Essentials Amentities";
 
+}
+.Lodging {
+  grid-area: Lodging;
+}
+.Essentials {
+  grid-area: Essentials;
+}
+.Amentities {
+  grid-area: Amentities;
+}
 .QuestionsModule{
   background-color: lightseagreen;
 }
@@ -37,13 +69,12 @@
 
 .Calendar{
   background-color: burlywood;
-  float: right;
-  width: 50%;
-  margin: auto;
+  grid-area: Calendar;
+
 }
 
 .nav {
-  background-color: yellow;
+  background-color: #ffffff;
   list-style-type: none;
   text-align: left;
   padding: 0;
@@ -56,13 +87,19 @@
   padding: 10px;
 }
 
+a:link {
+  color: black;
+}
 
+a:hover {
+  color: hotpink;
+}
 
 
 .circle {
   border: 1px solid black;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   display: inline-block;
   border-radius: 100%;
 
@@ -86,3 +123,19 @@
  right: 90px;
 }
 
+
+.details{
+  float: left;
+  width: 20%;
+  margin: auto;
+}
+.checkIn{
+  float: left;
+  width: 40%;
+  margin: auto;
+}
+.onArrival{
+  float: right;
+  width: 40%;
+  margin: auto;
+}
