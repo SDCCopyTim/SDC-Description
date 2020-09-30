@@ -24,5 +24,6 @@ CREATE TABLE CampSites(
   Essentials TEXT not Null,
   Amentities TEXT not Null,
   Owners TEXT not Null,
-  photosOfResponsers TEXT not Null
+  photosOfResponsers TEXT not Null,
+  cancellation TEXT not Null
 );

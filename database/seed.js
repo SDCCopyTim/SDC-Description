@@ -103,7 +103,7 @@ fillArr = (campArr) => {
   camp.Farms = `${Farms[Math.floor(Math.random() * Math.floor(Farms.length))]}`;
   camp.Camps = `${Camps[Math.floor(Math.random() * Math.floor(Camps.length))]}`;
   camp.minimumNights = (Math.floor(Math.random() * 100) + 1) + ' nights';
-  camp.acceptsBookings = (Math.floor(Math.random() * 12) + 1) + 'months out';
+  camp.acceptsBookings = (Math.floor(Math.random() * 12) + 1) + ' months out';
   camp.checkIn = `${checkIn[Math.floor(Math.random() * Math.floor(checkIn.length))]}`;
   camp.checkOut = `${checkOut[Math.floor(Math.random() * Math.floor(checkOut.length))]}`;
   camp.onArrival = `${onArrival[Math.floor(Math.random() * Math.floor(onArrival.length))]}`;
@@ -118,6 +118,7 @@ fillArr = (campArr) => {
   camp.Amentities = fillArr(Amentities);
   camp.Owners = Owners[Math.floor(Math.random() * Math.floor(Owners.length))];
   camp.photosOfResponsers = returnPhotos();
+  camp.cancellation = `${cancellation[Math.floor(Math.random() * Math.floor(cancellation.length))]}`;
 
 
   return camp;
@@ -134,7 +135,7 @@ const createCamps = () => {
 const insertMockData = function() {
   var campsArr = createCamps();
   campsArr.forEach((camp) => {
-    db.query(`INSERT INTO CampSites (States, Farms, Camps, minimumNights, acceptsBookings, checkIn, checkOut, onArrival, description, costs, review, responses, recommended, Parks, Lodging, Essentials, Amentities, Owners, photosOfResponsers) VALUES ('${camp.States}', '${camp.Farms}', '${camp.Camps}',  '${camp.minimumNights}', '${camp.acceptsBookings}', '${camp.checkIn}', '${camp.checkOut}', '${camp.onArrival}', '${camp.description}', ${camp.costs}, '${camp.review}', '${camp.responses}', '${camp.recommended}', '${camp.Parks}', '${camp.Lodging}', '${camp.Essentials}', '${camp.Amentities}', '${camp.Owners}', '${camp.photosOfResponsers}')`)
+    db.query(`INSERT INTO CampSites (States, Farms, Camps, minimumNights, acceptsBookings, checkIn, checkOut, onArrival, description, costs, review, responses, recommended, Parks, Lodging, Essentials, Amentities, Owners, photosOfResponsers, cancellation) VALUES ('${camp.States}', '${camp.Farms}', '${camp.Camps}',  '${camp.minimumNights}', '${camp.acceptsBookings}', '${camp.checkIn}', '${camp.checkOut}', '${camp.onArrival}', '${camp.description}', ${camp.costs}, '${camp.review}', '${camp.responses}', '${camp.recommended}', '${camp.Parks}', '${camp.Lodging}', '${camp.Essentials}', '${camp.Amentities}', '${camp.Owners}', '${camp.photosOfResponsers}', '${camp.cancellation}')`)
   })
 };
 
