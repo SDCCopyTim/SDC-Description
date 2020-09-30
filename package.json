@@ -32,6 +32,7 @@
     "mysql": "^2.14.1",
     "react": "^16.8.5",
     "react-dom": "^16.8.5",
+    "react-icons": "^3.11.0",
     "underscore": "^1.8.3",
     "webpack": "^4.44.2"
   },
