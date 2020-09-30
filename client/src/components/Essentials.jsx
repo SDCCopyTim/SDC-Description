@@ -7,7 +7,7 @@ const Essentials = (props) => {
       {props.essentials.map((item, index) =>(
         <EssentialsList item={item} key={index}/>
       ))}
-      <div className="footer">More Details</div>
+      <div className="footer" onClick={props.showEssentialsModal}>More Details</div>
       </div>
     );
 };

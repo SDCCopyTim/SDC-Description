@@ -17,14 +17,45 @@ import { GiForestCamp } from "react-icons/gi";
 
 
 
-const AmentitiesModal = ({handleClose, show}) => {
-  const showHideClassName = show ? "modal display-block" : "modal display-none";
+const AmentitiesModal = (props) => {
+  const showHideClassName = props.show ? "modal display-block" : "modal display-none";
+  var pic;
+  var picArr = [];
+  for(var i = 0; i < props.amentities.length; i++){
+    if(props.amentities[i] === 'Portable water available'){
+      pic = <FaWater />;
+      picArr.push(pic);
+    }
+    if(props.amentities[i] === 'No showers'){
+      pic = <FaShower />;
+      picArr.push(pic);
+    }
+    if(props.amentities[i] === 'No WiFi'){
+      pic = <BiWifiOff />;
+      picArr.push(pic);
+    }
+    if(props.amentities[i] === 'Pack it out'){
+      pic = <FaUtensils />;
+      picArr.push(pic);
+    }
+    else if(props.amentities[i] === 'Has Wifi'){
+      pic = <FaWifi />;
+      picArr.push(pic);
+    }
+  }
   return (
     <div className={showHideClassName}>
-      <div className="modal-main-amentities">
-      <h1>Amentities</h1>
+      <div className="AmentitiesModal">
+      <div className="closeAmentities" onClick={props.handleClose}>X</div>
+      <b>Amentities</b>
+      <div className="AmentitiesList">
+      {props.amentities.map((item,index) => (
+          <div className="smolModalItem">{picArr[index]} {item} </div>
+        )
+      )}
       </div>
-      <div className="close" onClick={handleClose}>X</div>
+      </div>
+
     </div>
   )
 };

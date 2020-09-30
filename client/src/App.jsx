@@ -3,7 +3,9 @@ import axios from 'axios';
 import Lodging from './components/Lodging.jsx';
 import Essentials from './components/Essentials.jsx';
 import Amentities from './components/Amentities.jsx';
-import Modal from './Modal.jsx'
+import Modal from './Modal.jsx';
+import LodgingModal from './LodgingModal.jsx';
+import EssentialsModal from './EssentialsModal.jsx';
 import AmentitiesModal from './AmentitiesModal.jsx';
 import { FaCamera } from "react-icons/fa";
 import { MdShare } from "react-icons/md"
@@ -23,12 +25,18 @@ class App extends React.Component {
       amentities: [],
       essentials: [],
       show: false,
-      showAmentities: false
+      showAmentities: false,
+      showLodging: false,
+      showEssentials: false
     };
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
     this.showAmentitiesModal = this.showAmentitiesModal.bind(this);
     this.hideAmentities = this.hideAmentities.bind(this);
+    this.showEssentialsModal = this.showEssentialsModal.bind(this);
+    this.hideEssentials = this.hideEssentials.bind(this);
+    this.showLodgingModal = this.showLodgingModal.bind(this);
+    this.hideLodging = this.hideLodging.bind(this);
   };
   componentDidMount(){
     axios.get('/all')
@@ -65,12 +73,36 @@ class App extends React.Component {
     this.setState({
       showAmentities: !this.state.showAmentities
     })
-    console.log('clicked');
   }
 
   hideAmentities(){
     this.setState({
       showAmentities:false
+    })
+  }
+
+  showEssentialsModal(e){
+    e.preventDefault();
+    this.setState({
+      showEssentials: !this.state.showEssentials
+    })
+  }
+
+  hideEssentials(){
+    this.setState({
+      showEssentials:false
+    })
+  }
+  showLodgingModal(e){
+    e.preventDefault();
+    this.setState({
+      showLodging: !this.state.showLodging
+    })
+  }
+
+  hideLodging(){
+    this.setState({
+      showLodging:false
     })
   }
 
@@ -81,7 +113,11 @@ class App extends React.Component {
       <div>
         <Modal id="modal" show={this.state.show} handleClose={this.hideModal} onClick={this.showModal} />
 
-        <AmentitiesModal id="modal" showAmentities={this.state.showAmentities} handleClose={this.hideAmentities} onClick={this.showAmentitiesModal} />
+        <AmentitiesModal id="modal" show={this.state.showAmentities} handleClose={this.hideAmentities} onClick={this.showAmentitiesModal} amentities={this.state.amentities}/>
+
+        <LodgingModal id="modal" show={this.state.showLodging} handleClose={this.hideLodging} onClick={this.showLodgingModal} lodging={this.state.lodging}/>
+
+        <EssentialsModal id="modal" show={this.state.showEssentials} handleClose={this.hideEssentials} onClick={this.showEssentialsModal} essentials={this.state.essentials}/>
 
         <div className="MainContainer">
           <div className="LeftModule">
@@ -138,13 +174,13 @@ class App extends React.Component {
 
             <div className="AmentitiesEssentialsLodging">
               <div className="Lodging"><b>Lodging</b>
-                <Lodging lodging={this.state.lodging} />
+                <Lodging lodging={this.state.lodging} showLodgingModal={this.showLodgingModal}/>
               </div>
               <div className="Essentials"><b>Essentials</b>
-                <Essentials essentials={this.state.essentials} />
+                <Essentials essentials={this.state.essentials} showEssentialsModal={this.showEssentialsModal}/>
               </div>
               <div className="Amentities"><b>Amentities</b>
-                <Amentities amentities={this.state.amentities} onClick={this.showAmentitiesModal}/>
+                <Amentities amentities={this.state.amentities} showAmentitiesModal={this.showAmentitiesModal}/>
               </div>
             </div>
 

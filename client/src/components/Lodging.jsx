@@ -7,7 +7,7 @@ const Lodging = (props) => {
       {props.lodging.map((item, index) =>(
         <LodgingList item={item} key={index}/>
       ))}
-      <div className="footer">More Details</div>
+      <div className="footer" onClick={props.showLodgingModal}>More Details</div>
       </div>
     );
 };
