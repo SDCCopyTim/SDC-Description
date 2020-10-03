@@ -11,11 +11,16 @@ module.exports = {
     module: {
       rules: [
         {
+          test: /\.css$/i,
+          use: ['css-loader'],
+        },
+        {
           loader: 'babel-loader',
           test: /\.js[x]?/,
           exclude: /node_modules/,
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react'],
+
           },
         },
       ],
@@ -23,4 +28,5 @@ module.exports = {
     resolve: {
       extensions: ['.js', '.jsx'],
     }
+
 }

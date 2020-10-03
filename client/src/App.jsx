@@ -11,15 +11,17 @@ import { FaCamera } from "react-icons/fa";
 import { MdShare } from "react-icons/md"
 import { FaThumbsUp } from "react-icons/fa";
 import { BsChevronBarDown } from "react-icons/bs";
-
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      id: window.location.pathname,
       campsites: [],
-      currCampSite:[],
+      currCampSite: [],
       photos: [],
       lodging: [],
       amentities: [],
@@ -27,7 +29,11 @@ class App extends React.Component {
       show: false,
       showAmentities: false,
       showLodging: false,
-      showEssentials: false
+      showEssentials: false,
+      checkin: false,
+      checkout: false,
+      checkIndate: new Date(),
+      value: 0
     };
     this.showModal = this.showModal.bind(this);
     this.hideModal = this.hideModal.bind(this);
@@ -37,8 +43,14 @@ class App extends React.Component {
     this.hideEssentials = this.hideEssentials.bind(this);
     this.showLodgingModal = this.showLodgingModal.bind(this);
     this.hideLodging = this.hideLodging.bind(this);
+    this.selectDateIn = this.selectDateIn.bind(this);
+    this.selectDateOut = this.selectDateOut.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.doDecrement = this.doDecrement.bind(this);
+    this.doIncrement = this.doIncrement.bind(this);
   };
-  componentDidMount(){
+  componentDidMount() {
+    // axios.get(`/one${this.state.id}`)
     axios.get('/all')
       .then((results) => {
         this.setState({
@@ -49,10 +61,40 @@ class App extends React.Component {
           amentities: results.data[0].Amentities.split(','),
           essentials: results.data[0].Essentials.split(',')
         })
+        console.log(results.data);
       })
       .catch((err) => {
         console.log(err)
       })
+  }
+
+  selectDateIn(e) {
+    e.preventDefault();
+    this.setState({
+      checkin: !this.state.checkin
+    })
+  }
+
+  selectDateOut(e) {
+    e.preventDefault();
+    this.setState({
+      checkout: !this.state.checkout
+    })
+  }
+
+  onChange(date) {
+    if (this.state.checkin === true) {
+      this.setState({
+        checkInDate: date,
+        checkin: !this.state.checkin
+      })
+    }
+    else if (this.state.checkout === true) {
+      this.setState({
+        checkOutDate: date,
+        checkout: !this.state.checkout
+      })
+    }
   }
 
   showModal(e) {
@@ -62,173 +104,451 @@ class App extends React.Component {
     })
   }
 
-  hideModal(){
+  hideModal() {
     this.setState({
-      show:false
+      show: false
     })
   }
 
-  showAmentitiesModal(e){
+  showAmentitiesModal(e) {
     e.preventDefault();
     this.setState({
       showAmentities: !this.state.showAmentities
     })
   }
 
-  hideAmentities(){
+  hideAmentities() {
     this.setState({
-      showAmentities:false
+      showAmentities: false
     })
   }
 
-  showEssentialsModal(e){
+  showEssentialsModal(e) {
     e.preventDefault();
     this.setState({
       showEssentials: !this.state.showEssentials
     })
   }
 
-  hideEssentials(){
+  hideEssentials() {
     this.setState({
-      showEssentials:false
+      showEssentials: false
     })
   }
-  showLodgingModal(e){
+  showLodgingModal(e) {
     e.preventDefault();
     this.setState({
       showLodging: !this.state.showLodging
     })
   }
 
-  hideLodging(){
+  hideLodging() {
     this.setState({
-      showLodging:false
+      showLodging: false
     })
   }
 
 
+
+  doDecrement() {
+    if(this.state.value) {
+      this.setState({
+        value: this.state.value - 1,
+      });
+    }
+  }
+
+  doIncrement() {
+    if(this.state.value < 10) {
+      this.setState({
+        value: this.state.value + 1,
+      });
+    }
+  }
+
+
   render() {
+    const { selectedDay, isDisabled, isEmpty } = this.state;
+    const checkin = this.state.checkin;
+    const checkout = this.state.checkout;
+    const price = this.state.currCampSite.costs;
+
+    if(this.state.value > 0){
+      price = price * this.state.value;
+      return price;
+    }
 
     return (
       <div>
-        <Modal id="modal" show={this.state.show} handleClose={this.hideModal} onClick={this.showModal} />
+        {checkin || checkout ? (
+          <div>
+            <Modal id="modal" show={this.state.show} handleClose={this.hideModal} onClick={this.showModal} />
 
-        <AmentitiesModal id="modal" show={this.state.showAmentities} handleClose={this.hideAmentities} onClick={this.showAmentitiesModal} amentities={this.state.amentities}/>
+            <AmentitiesModal id="modal" show={this.state.showAmentities} handleClose={this.hideAmentities} onClick={this.showAmentitiesModal} amentities={this.state.amentities} />
 
-        <LodgingModal id="modal" show={this.state.showLodging} handleClose={this.hideLodging} onClick={this.showLodgingModal} lodging={this.state.lodging}/>
+            <LodgingModal id="modal" show={this.state.showLodging} handleClose={this.hideLodging} onClick={this.showLodgingModal} lodging={this.state.lodging} />
 
-        <EssentialsModal id="modal" show={this.state.showEssentials} handleClose={this.hideEssentials} onClick={this.showEssentialsModal} essentials={this.state.essentials}/>
+            <EssentialsModal id="modal" show={this.state.showEssentials} handleClose={this.hideEssentials} onClick={this.showEssentialsModal} essentials={this.state.essentials} />
 
-        <div className="MainContainer">
-          <div className="LeftModule">
-            <div className="TitleModule">
-              <ul className="nav">
-                <li><a>United States</a></li>
-                <li><a> > </a></li>
-                <li><a href="#States">{this.state.currCampSite.States}</a></li>
-                <li><a> > </a></li>
-                <li><a href="#Farms">{this.state.currCampSite.Farms}</a></li>
-                <li><a> > </a></li>
-              </ul>
+            <div className="MainContainer">
+              <div className="LeftModule">
+                <div className="TitleModule">
+                  <ul className="nav">
+                    <li><a>United States</a></li>
+                    <li><a> > </a></li>
+                    <li><a href="#States">{this.state.currCampSite.States}</a></li>
+                    <li><a> > </a></li>
+                    <li><a href="#Farms">{this.state.currCampSite.Farms}</a></li>
+                    <li><a> > </a></li>
+                  </ul>
 
-              <div className="CampSite">
-                <h1>{this.state.currCampSite.Farms}</h1>
-                <p><b>Nearby:</b> {this.state.currCampSite.Parks}</p>
-              </div>
-
-              <div className="Recommends">
-
-                <div className="Recommend">
-                  <a><FaThumbsUp />{this.state.currCampSite.recommended} </a>
-                  <div className="color">Recommend
-                </div>
-                </div>
-
-                <div className="Photos">
-                  <img src={this.state.photos[0]} className="circle" id="circle1" />
-                  <img src={this.state.photos[1]} className="circle" id="circle2" />
-                  <img src={this.state.photos[2]} className="circle" id="circle3" />
-                  <img src={this.state.photos[3]} className="circle" id="circle4" />
-                  <div className="circle" id="notCircle">{this.state.currCampSite.responses}</div>
-                </div>
-                <div className="Share">
-                  <div className="A" onClick={this.showModal}><a className="a"><FaCamera /><div className="upload">Upload</div></a>
+                  <div className="CampSite">
+                    <h1>{this.state.currCampSite.Farms}</h1>
+                    <p><b>Nearby:</b> {this.state.currCampSite.Parks}</p>
                   </div>
-                  <div className='B' onClick={this.showModal}><a className='b'><BsChevronBarDown /><div className="save">Save To List</div></a>
+
+                  <div className="Recommends">
+
+                    <div className="Recommend">
+                      <a><FaThumbsUp />{this.state.currCampSite.recommended} </a>
+                      <div className="color">Recommend
+                    </div>
+                    </div>
+
+                    <div className="Photos">
+                      <img src={this.state.photos[0]} className="circle" id="circle1" />
+                      <img src={this.state.photos[1]} className="circle" id="circle2" />
+                      <img src={this.state.photos[2]} className="circle" id="circle3" />
+                      <img src={this.state.photos[3]} className="circle" id="circle4" />
+                      <div className="circle" id="notCircle">{this.state.currCampSite.responses}</div>
+                    </div>
+                    <div className="Share">
+                      <div className="A" onClick={this.showModal}><a className="a"><FaCamera /><div className="upload">Upload</div></a>
+                      </div>
+                      <div className='B' onClick={this.showModal}><a className='b'><BsChevronBarDown /><div className="save">Save To List</div></a>
+                      </div>
+                      <div className='C'><a className='c'><MdShare /></a>
+                      </div>
+                    </div>
                   </div>
-                  <div className='C'><a className='c'><MdShare /></a>
+
+                </div>
+                <br></br>
+                <div className="DescriptionModule">
+                  <p>
+                  </p>{this.state.currCampSite.description}
+
+                </div>
+
+
+                <br></br>
+
+                <div className="AmentitiesEssentialsLodging">
+                  <div className="Lodging"><b>Lodging</b>
+                    <Lodging lodging={this.state.lodging} showLodgingModal={this.showLodgingModal} />
                   </div>
+                  <div className="Essentials"><b>Essentials</b>
+                    <Essentials essentials={this.state.essentials} showEssentialsModal={this.showEssentialsModal} />
+                  </div>
+                  <div className="Amentities"><b>Amentities</b>
+                    <Amentities amentities={this.state.amentities} showAmentitiesModal={this.showAmentitiesModal} />
+                  </div>
+                </div>
+
+                <div className="QuestionsModule" onClick={this.showModal}>
+                  Have a Question? <div className="owners">Send {this.state.currCampSite.Owners} a message! </div>
+                </div>
+                <div className="Details">
+                  <div className="details">Details
+               </div>
+                  <div className="checkIn">
+                    <ul>
+                      <li>Check In: {this.state.currCampSite.checkIn}</li>
+                      <li>Check Out: {this.state.currCampSite.checkOut}</li>
+                      <li>Cancellation Policy: {this.state.currCampSite.cancellation}</li>
+                    </ul>
+                  </div>
+                  <div className="onArrival">
+                    <ul>
+                      <li>On Arrival: {this.state.currCampSite.onArrival}</li>
+                      <li>Minimum Nights: {this.state.currCampSite.minimumNights}</li>
+                      <li>Accepts Bookings: {this.state.currCampSite.acceptsBookings}</li>
+                    </ul>
+                  </div>
+
                 </div>
               </div>
 
-            </div>
-            <br></br>
-            <div className="DescriptionModule">
-              <p>
-              </p>{this.state.currCampSite.description}
+              <div className="Calendar">
+                <div className="newCalendar">
 
-            </div>
-
-
-            <br></br>
-
-            <div className="AmentitiesEssentialsLodging">
-              <div className="Lodging"><b>Lodging</b>
-                <Lodging lodging={this.state.lodging} showLodgingModal={this.showLodgingModal}/>
-              </div>
-              <div className="Essentials"><b>Essentials</b>
-                <Essentials essentials={this.state.essentials} showEssentialsModal={this.showEssentialsModal}/>
-              </div>
-              <div className="Amentities"><b>Amentities</b>
-                <Amentities amentities={this.state.amentities} showAmentitiesModal={this.showAmentitiesModal}/>
+                  <Calendar onChange={this.onChange}
+                    value={this.state.date} />
+                </div>
               </div>
             </div>
+          </div>
 
-            <div className="QuestionsModule" onClick={this.showModal}>
-              Have a Question? <div className="owners">Send {this.state.currCampSite.Owners} a message! </div>
-            </div>
-            <div className="Details">
-              <div className="details">Details
+
+
+
+        ) : (
+
+
+
+
+
+            <div>
+              <Modal id="modal" show={this.state.show} handleClose={this.hideModal} onClick={this.showModal} />
+
+              <AmentitiesModal id="modal" show={this.state.showAmentities} handleClose={this.hideAmentities} onClick={this.showAmentitiesModal} amentities={this.state.amentities} />
+
+              <LodgingModal id="modal" show={this.state.showLodging} handleClose={this.hideLodging} onClick={this.showLodgingModal} lodging={this.state.lodging} />
+
+              <EssentialsModal id="modal" show={this.state.showEssentials} handleClose={this.hideEssentials} onClick={this.showEssentialsModal} essentials={this.state.essentials} />
+
+              <div className="MainContainer">
+                <div className="LeftModule">
+                  <div className="TitleModule">
+                    <ul className="nav">
+                      <li><a>United States</a></li>
+                      <li><a> > </a></li>
+                      <li><a href="#States">{this.state.currCampSite.States}</a></li>
+                      <li><a> > </a></li>
+                      <li><a href="#Farms">{this.state.currCampSite.Farms}</a></li>
+                      <li><a> > </a></li>
+                    </ul>
+
+                    <div className="CampSite">
+                      <h1>{this.state.currCampSite.Farms}</h1>
+                      <p><b>Nearby:</b> {this.state.currCampSite.Parks}</p>
+                    </div>
+
+                    <div className="Recommends">
+
+                      <div className="Recommend">
+                        <a><FaThumbsUp />{this.state.currCampSite.recommended} </a>
+                        <div className="color">Recommend
+                </div>
+                      </div>
+
+                      <div className="Photos">
+                        <img src={this.state.photos[0]} className="circle" id="circle1" />
+                        <img src={this.state.photos[1]} className="circle" id="circle2" />
+                        <img src={this.state.photos[2]} className="circle" id="circle3" />
+                        <img src={this.state.photos[3]} className="circle" id="circle4" />
+                        <div className="circle" id="notCircle">{this.state.currCampSite.responses}</div>
+                      </div>
+                      <div className="Share">
+                        <div className="A" onClick={this.showModal}><a className="a"><FaCamera /><div className="upload">Upload</div></a>
+                        </div>
+                        <div className='B' onClick={this.showModal}><a className='b'><BsChevronBarDown /><div className="save">Save To List</div></a>
+                        </div>
+                        <div className='C'><a className='c'><MdShare /></a>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  <br></br>
+                  <div className="DescriptionModule">
+                    <p>
+                    </p>{this.state.currCampSite.description}
+
+                  </div>
+
+
+                  <br></br>
+
+                  <div className="AmentitiesEssentialsLodging">
+                    <div className="Lodging"><b>Lodging</b>
+                      <Lodging lodging={this.state.lodging} showLodgingModal={this.showLodgingModal} />
+                    </div>
+                    <div className="Essentials"><b>Essentials</b>
+                      <Essentials essentials={this.state.essentials} showEssentialsModal={this.showEssentialsModal} />
+                    </div>
+                    <div className="Amentities"><b>Amentities</b>
+                      <Amentities amentities={this.state.amentities} showAmentitiesModal={this.showAmentitiesModal} />
+                    </div>
+                  </div>
+
+                  <div className="QuestionsModule" onClick={this.showModal}>
+                    Have a Question? <div className="owners">Send {this.state.currCampSite.Owners} a message! </div>
+                  </div>
+                  <div className="Details">
+                    <div className="details">Details
            </div>
-              <div className="checkIn">
-                <ul>
-                  <li>Check In: {this.state.currCampSite.checkIn}</li>
-                  <li>Check Out: {this.state.currCampSite.checkOut}</li>
-                  <li>Cancellation Policy: {this.state.currCampSite.cancellation}</li>
-                </ul>
-              </div>
-              <div className="onArrival">
-                <ul>
-                  <li>On Arrival: {this.state.currCampSite.onArrival}</li>
-                  <li>Minimum Nights: {this.state.currCampSite.minimumNights}</li>
-                  <li>Accepts Bookings: {this.state.currCampSite.acceptsBookings}</li>
-                </ul>
-              </div>
+                    <div className="checkIn">
+                      <ul>
+                        <li>Check In: {this.state.currCampSite.checkIn}</li>
+                        <li>Check Out: {this.state.currCampSite.checkOut}</li>
+                        <li>Cancellation Policy: {this.state.currCampSite.cancellation}</li>
+                      </ul>
+                    </div>
+                    <div className="onArrival">
+                      <ul>
+                        <li>On Arrival: {this.state.currCampSite.onArrival}</li>
+                        <li>Minimum Nights: {this.state.currCampSite.minimumNights}</li>
+                        <li>Accepts Bookings: {this.state.currCampSite.acceptsBookings}</li>
+                      </ul>
+                    </div>
 
-            </div>
+                  </div>
+                </div>
+                <div className="Calendar">
+                  <div className="smolCalendar">
+                    <div className="Cost">
+                      <b>{price}</b>
+                      <div className="pernight">per night</div>
+                    </div>
+                    <div className="CheckInCheckOutGuests">
+                      <div className="checkin" onClick={this.selectDateIn}><b>Check In</b><br></br>
+              Select Date</div>
+                      <div className="checkout" onClick={this.selectDateOut}><b>Check Out</b><br></br>
+              Select Date</div>
+                      <div className="guests"><b>Guests</b><br></br>
+                      <div>
+          <button onClick={this.doDecrement} className="minus">-</button>
+          <input type="text" className="number" value={this.state.value }></input>
+          <button onClick={this.doIncrement} className="plus">+</button>
           </div>
-          <div className="Calendar">
-            <div className="smolCalendar">
-              <div className="Cost">
-                <b>${this.state.currCampSite.costs}</b>
-                <div className="pernight">per night</div>
               </div>
-              <div className="CheckInCheckOutGuests">
-                <div className="checkin"><b>Check In</b><br></br>
-              Select Date</div>
-                <div className="checkout"><b>Check Out</b><br></br>
-              Select Date</div>
-                <div className="guests"><b>Guests</b><br></br>
-              Select Date</div>
+                    </div>
+                    <div className="InstantBook" onClick={this.showModal}>Instant Book</div>
+                  </div>
+                </div>
               </div>
-              <div className="InstantBook">Instant Book</div>
             </div>
-          </div>
-        </div>
+
+          )}
       </div>
     );
+
   };
 };
 
 
-export default App;
+  export default App;
+
+
+
+
+
+      // return (
+      //   <div>
+      //     <Modal id="modal" show={this.state.show} handleClose={this.hideModal} onClick={this.showModal}  />
+
+      //     <AmentitiesModal id="modal" show={this.state.showAmentities} handleClose={this.hideAmentities} onClick={this.showAmentitiesModal} amentities={this.state.amentities}/>
+
+      //     <LodgingModal id="modal" show={this.state.showLodging} handleClose={this.hideLodging} onClick={this.showLodgingModal} lodging={this.state.lodging}/>
+
+      //     <EssentialsModal id="modal" show={this.state.showEssentials} handleClose={this.hideEssentials} onClick={this.showEssentialsModal} essentials={this.state.essentials}/>
+
+      //     <div className="MainContainer">
+      //       <div className="LeftModule">
+      //         <div className="TitleModule">
+      //           <ul className="nav">
+      //             <li><a>United States</a></li>
+      //             <li><a> > </a></li>
+      //             <li><a href="#States">{this.state.currCampSite.States}</a></li>
+      //             <li><a> > </a></li>
+      //             <li><a href="#Farms">{this.state.currCampSite.Farms}</a></li>
+      //             <li><a> > </a></li>
+      //           </ul>
+
+      //           <div className="CampSite">
+      //             <h1>{this.state.currCampSite.Farms}</h1>
+      //             <p><b>Nearby:</b> {this.state.currCampSite.Parks}</p>
+      //           </div>
+
+      //           <div className="Recommends">
+
+      //             <div className="Recommend">
+      //               <a><FaThumbsUp />{this.state.currCampSite.recommended} </a>
+      //               <div className="color">Recommend
+      //             </div>
+      //             </div>
+
+      //             <div className="Photos">
+      //               <img src={this.state.photos[0]} className="circle" id="circle1" />
+      //               <img src={this.state.photos[1]} className="circle" id="circle2" />
+      //               <img src={this.state.photos[2]} className="circle" id="circle3" />
+      //               <img src={this.state.photos[3]} className="circle" id="circle4" />
+      //               <div className="circle" id="notCircle">{this.state.currCampSite.responses}</div>
+      //             </div>
+      //             <div className="Share">
+      //               <div className="A" onClick={this.showModal}><a className="a"><FaCamera /><div className="upload">Upload</div></a>
+      //               </div>
+      //               <div className='B' onClick={this.showModal}><a className='b'><BsChevronBarDown /><div className="save">Save To List</div></a>
+      //               </div>
+      //               <div className='C'><a className='c'><MdShare /></a>
+      //               </div>
+      //             </div>
+      //           </div>
+
+      //         </div>
+      //         <br></br>
+      //         <div className="DescriptionModule">
+      //           <p>
+      //           </p>{this.state.currCampSite.description}
+
+      //         </div>
+
+
+      //         <br></br>
+
+      //         <div className="AmentitiesEssentialsLodging">
+      //           <div className="Lodging"><b>Lodging</b>
+      //             <Lodging lodging={this.state.lodging} showLodgingModal={this.showLodgingModal}/>
+      //           </div>
+      //           <div className="Essentials"><b>Essentials</b>
+      //             <Essentials essentials={this.state.essentials} showEssentialsModal={this.showEssentialsModal}/>
+      //           </div>
+      //           <div className="Amentities"><b>Amentities</b>
+      //             <Amentities amentities={this.state.amentities} showAmentitiesModal={this.showAmentitiesModal}/>
+      //           </div>
+      //         </div>
+
+      //         <div className="QuestionsModule" onClick={this.showModal}>
+      //           Have a Question? <div className="owners">Send {this.state.currCampSite.Owners} a message! </div>
+      //         </div>
+      //         <div className="Details">
+      //           <div className="details">Details
+      //        </div>
+      //           <div className="checkIn">
+      //             <ul>
+      //               <li>Check In: {this.state.currCampSite.checkIn}</li>
+      //               <li>Check Out: {this.state.currCampSite.checkOut}</li>
+      //               <li>Cancellation Policy: {this.state.currCampSite.cancellation}</li>
+      //             </ul>
+      //           </div>
+      //           <div className="onArrival">
+      //             <ul>
+      //               <li>On Arrival: {this.state.currCampSite.onArrival}</li>
+      //               <li>Minimum Nights: {this.state.currCampSite.minimumNights}</li>
+      //               <li>Accepts Bookings: {this.state.currCampSite.acceptsBookings}</li>
+      //             </ul>
+      //           </div>
+
+      //         </div>
+      //       </div>
+      //       <div className="Calendar">
+      //         <div className="smolCalendar">
+      //           <div className="Cost">
+      //             <b>${this.state.currCampSite.costs}</b>
+      //             <div className="pernight">per night</div>
+      //           </div>
+      //           <div className="CheckInCheckOutGuests">
+      //             <div className="checkin"><b>Check In</b><br></br>
+      //           Select Date</div>
+      //             <div className="checkout"><b>Check Out</b><br></br>
+      //           Select Date</div>
+      //             <div className="guests"><b>Guests</b><br></br>
+      //           Select Date</div>
+      //           </div>
+      //           <div className="InstantBook">Instant Book</div>
+      //         </div>
+      //       </div>
+      //     </div>
+      //   </div>
+      // );

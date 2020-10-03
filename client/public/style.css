@@ -1,18 +1,29 @@
 .MainContainer {
-  display: grid;
-  grid-template-columns: 720px 360px;
-  grid-template-rows: 1fr;
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  font-size: 12px;
+  width: 1080px;
+  flex-direction: row;
+  grid-template-rows: 720px 360px;
   gap: 20px 20px;
-  justify-content: center;
+  align-items: center;
+  margin: auto;
+  justify-content: space-evenly;
   grid-template-areas:
     "LeftModule Calendar";
 }
 .LeftModule{
   grid-area: LeftModule;
+  display: grid;
+  width: 720px;
+  justify-content: space-evenly;
+  left: auto;
 }
 
 .TitleModule{
   background-color: #ffffff;
+  margin: -15px;
 }
 
 .CampSite{
@@ -20,7 +31,7 @@
     padding: 5px;
 }
 .CampSite body{
-  font-size: 10px;
+  font-size: 8px;
   padding: 2px;
 }
 
@@ -47,13 +58,15 @@
 }
 .Photos {
   height:auto;
+  margin-left: -50px;
   padding-top: 15px;
   grid-area: Photos;
   align-self: start;
  }
 .Share {
   grid-area: Share;
-
+  padding-left: 50px;
+  margin-bottom: -15px;
   /*align-self: end;
   margin: 25px; */
   display: grid;
@@ -188,7 +201,7 @@
 
 .Details{
   border-top: 1px solid lightgrey;
-  background-color: lightgreen;
+  background-color: #ffffff;
 }
 
 .nav {
@@ -281,7 +294,7 @@ a:hover {
 .LodgingModal {
   text-align: center;
   padding: 20px;
-  font-size: 32px;
+  font-size: 24px;
   position:relative;
   align-content: center;
   background: white;
@@ -296,7 +309,7 @@ a:hover {
 .closeEssentials,
 .closeLodging {
   padding: 0px;
-  font-size: 13px;
+  font-size: 8px;
   text-align: start;
 }
 
@@ -340,18 +353,22 @@ a:hover {
 }
 .Calendar {
   grid-area: Calendar;
-  height: 25%;
+  height: 800px;
+  width: 360px;
+  justify-content: space-evenly;
+  display: flex;
+  grid-template-rows: "smolCalendar";
 }
 .smolCalendar{
   border: 1px solid lightgrey;
-  position:relative;
+  grid-area: smolCalendar;
+  position:sticky;
   background: #ffffff;
-  width: 80%;
-  height: 90%;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
+  height: 20%;
+  top: 0;
   display: grid;
+  padding-bottom: 10px;
+  width: 80%;
   grid-template-columns: 1fr;
   grid-template-rows: 25% 35% 15%;
   gap: 1px 0px;
@@ -362,7 +379,7 @@ a:hover {
 }
 .Cost {
   grid-area: Cost;
-  color: black;
+  color: #333;
   font-size: 24px;
   padding-left: 5px;
   height: auto;
@@ -373,42 +390,55 @@ a:hover {
 .CheckInCheckOutGuests {
   grid-area: CheckInCheckOutGuests;
   height: auto;
+  align-items: center;
   display: grid;
   grid-template-columns: 33% 33% 33%;
   grid-template-rows: 1fr;
   gap: 1px 2px;
   grid-template-areas:
     "checkin checkout guests";
-  grid-area: CheckInCheckOutGuests;
  }
+
+ .newCalendar{
+  grid-area: CheckInCheckOutGuests;
+  height: auto;
+  align-items: center;
+  display: grid;
+  position: sticky;
+  background: #ffffff;
+  height: 30%;
+  top: 0;
+ }
+
+
 .checkin {
   grid-area: checkin;
-  padding-top: 5px;
+  padding: 10px;
   border-top: solid 1px lightgrey;
   border-bottom: solid 1px lightgrey;
   border-right: solid 1px lightgrey;
   align-content: center;
-  font-size: 15px;
+  font-size: 12px;
   justify-content: center;
   padding-left: 10px;
 
  }
 .checkout {
   grid-area: checkout;
-  padding-top: 5px;
+  padding: 10px;
   border: solid 1px lightgrey;
   align-content: center;
-  font-size: 15px;
+  font-size: 12px;
   justify-content: center;
   padding-left: 10px;
 
  }
 .guests {
   grid-area: guests;
-  padding-top: 5px;
+  padding: 6.5px;
   border: solid 1px lightgrey;
   align-content: center;
-  font-size: 15px;
+  font-size: 12px;
   justify-content: center;
   padding-left: 10px;
 
@@ -588,3 +618,120 @@ a:hover {
   animation-direction: normal, alternate;
 }
 
+
+.react-calendar{
+  width: 360px;
+}
+
+
+.react-calendar__navigation__arrow,  .react-calendar__navigation__prev2-button {
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    background-color: white;
+    box-sizing: border-box;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 6px;
+    appearance: none;
+    color: #40d9ac;
+    border: 1px solid;
+}
+
+.react-calendar__navigation__label{
+  appearance: button;
+  flex-grow: 1;
+    color: #40d9ac;
+    background-color: white;
+    border: 1px solid;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    box-sizing: border-box;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 6px;
+}
+
+.react-calendar__month-view__days{
+  display: flex;
+  flex-wrap: wrap;
+  height: 150px;
+  border: 1px solid #40d9ac;
+}
+
+.react-calendar__month-view__weekdays{
+  display: flex;
+  text-align: -webkit-center;
+  background: #40d9ac;
+
+}
+
+.react-calendar__month-view__weekdays__weekday{
+  flex-basis: 14.2857%;
+  max-width: 14.2857%;
+  overflow: hidden;
+  font-size: 15px;
+  color: white;
+}
+
+.react-calendar__tile,
+.react-calendar__month-view__days__day,
+.react-calendar__month-view__days__day--neighboringMonth {
+  appearance: button;
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    flex-basis: 14.2857%;
+    max-width: 14.2857%;
+    overflow: hidden;
+    color: #40d9ac;
+    background: white;
+    border: none;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    box-sizing: border-box;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 6px;
+}
+
+.react-calendar__tile:hover{
+  background-color: #40d9ac;
+  color: white;
+}
+
+
+.number{
+  width: 25%;
+  font-size: 12px;
+}
+
+.plus,
+.minus{
+  font-size: small;
+  background-color: white;
+  border: none;
+}

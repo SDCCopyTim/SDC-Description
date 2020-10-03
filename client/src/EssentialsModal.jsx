@@ -35,7 +35,7 @@ const EssentialsModal = (props) => {
   }
   return (
     <div className={showHideClassName}>
-      <div className="EssentialsModal">
+      <div className="EssentialsModal" >
       <div className="closeEssentials" onClick={props.handleClose}>X</div>
       <b>Essentials</b>
       <div className="EssentialsList">

@@ -8,7 +8,7 @@ const Modal = ({handleClose, show}) => {
   const showHideClassName = show ? "modal display-block" : "modal display-none";
   return(
     <div className={showHideClassName}>
-      <div className="modal-main">
+      <div className="modal-main" >
         <div className="Welcome"><b>WELCOME BACK!</b>
           <p>Let's get you inside!</p>
         </div>
