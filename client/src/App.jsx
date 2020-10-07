@@ -13,6 +13,7 @@ import { FaThumbsUp } from "react-icons/fa";
 import { BsChevronBarDown } from "react-icons/bs";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import Zoom from 'react-reveal/Zoom';
 
 
 class App extends React.Component {
@@ -20,7 +21,8 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      id: window.location.pathname,
+      // id: window.location.pathname,
+      id: 52,
       campsites: [],
       currCampSite: [],
       photos: [],
@@ -52,7 +54,8 @@ class App extends React.Component {
   };
   componentDidMount() {
     // axios.get(`/one${this.state.id}`)
-    axios.get(`http://localhost:3002/one${this.state.id}`)
+    // axios.get(`http://localhost:3002/one${this.state.id}`)
+    axios.get(`http://localhost:3002/one/${this.state.id}`)
       .then((results) => {
         this.setState({
           campsites: results.data,
@@ -89,6 +92,7 @@ class App extends React.Component {
         checkInDate: date,
         checkin: !this.state.checkin
       })
+      console.log(this.state.checkInDate);
     }
     else if (this.state.checkout === true) {
       this.setState({
@@ -183,6 +187,7 @@ class App extends React.Component {
       <div>
         {checkin || checkout ? (
           <div>
+
             <Modal id="modal" show={this.state.show} handleClose={this.hideModal} onClick={this.showModal} />
 
             <AmentitiesModal id="modal" show={this.state.showAmentities} handleClose={this.hideAmentities} onClick={this.showAmentitiesModal} amentities={this.state.amentities} />
@@ -205,7 +210,7 @@ class App extends React.Component {
 
                   <div className="CampSite">
                     <h1>{this.state.currCampSite.Farms}</h1>
-                    <p><b>Nearby:</b> {this.state.currCampSite.Parks}</p>
+                    <div className="nearby"><b>Nearby:</b> {this.state.currCampSite.Parks}</div>
                   </div>
 
                   <div className="Recommends">
@@ -380,16 +385,16 @@ class App extends React.Component {
            </div>
                     <div className="checkIn">
                       <ul>
-                        <li>Check In: {this.state.currCampSite.checkIn}</li>
-                        <li>Check Out: {this.state.currCampSite.checkOut}</li>
-                        <li>Cancellation Policy: {this.state.currCampSite.cancellation}</li>
+                        <li><b>Check In:</b> {this.state.currCampSite.checkIn}</li>
+                        <li><b>Check Out:</b> {this.state.currCampSite.checkOut}</li>
+                        <li><b>Cancellation Policy:</b> {this.state.currCampSite.cancellation}</li>
                       </ul>
                     </div>
                     <div className="onArrival">
                       <ul>
-                        <li>On Arrival: {this.state.currCampSite.onArrival}</li>
-                        <li>Minimum Nights: {this.state.currCampSite.minimumNights}</li>
-                        <li>Accepts Bookings: {this.state.currCampSite.acceptsBookings}</li>
+                        <li><b>On Arrival:</b> {this.state.currCampSite.onArrival}</li>
+                        <li><b>Minimum Nights:</b> {this.state.currCampSite.minimumNights}</li>
+                        <li><b>Accepts Bookings:</b> {this.state.currCampSite.acceptsBookings}</li>
                       </ul>
                     </div>
 

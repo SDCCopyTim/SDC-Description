@@ -1,4 +1,5 @@
 .MainContainer {
+  padding-top: 10px;
   display: flex;
   font-family: 'Roboto', sans-serif;
   color: #333;
@@ -15,6 +16,7 @@
 }
 .LeftModule{
   grid-area: LeftModule;
+  margin-top: -100px;
   display: grid;
   width: 720px;
   justify-content: space-evenly;
@@ -157,6 +159,8 @@
 .DescriptionModule{
   background-color: #ffffff;
   border-top: 1px solid lightgrey;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 .AmentitiesEssentialsLodging{
@@ -169,6 +173,7 @@
 
 }
 .Lodging, .Amentities, .Essentials {
+  padding-top: 8px;
   grid-area: Lodging;
   font-size: 16px;
   border: solid;
@@ -215,12 +220,20 @@
   background-color: #ffffff;
 }
 
+h1{
+  font-size: 28px;
+}
+
+.nearby{
+  font-size:10px;
+}
+
 .nav {
   background-color: #ffffff;
   list-style-type: none;
   text-align: left;
   padding: 0;
-  margin: 0;
+  margin-top: -50px;
 }
 
 .nav li {
@@ -286,11 +299,13 @@ a:hover {
   margin: auto;
 }
 .checkIn{
+  padding-top: 8px;
   float: left;
   width: 40%;
   margin: auto;
 }
 .onArrival{
+  padding-top: 8px;
   float: right;
   width: 40%;
   margin: auto;
@@ -539,6 +554,7 @@ a:hover {
 
 .display-block {
   display: block;
+
 }
 
 .display-none {
@@ -661,14 +677,14 @@ a:hover {
     font: 400 13.3333px Arial;
     padding: 1px 6px;
     appearance: none;
-    color: #40d9ac;
+    color: #333;
     border: 1px solid;
 }
 
 .react-calendar__navigation__label{
   appearance: button;
   flex-grow: 1;
-    color: #40d9ac;
+    color: #333;
     background-color: white;
     border: 1px solid;
     -webkit-writing-mode: horizontal-tb !important;
@@ -719,7 +735,9 @@ a:hover {
     flex-basis: 14.2857%;
     max-width: 14.2857%;
     overflow: hidden;
-    color: #40d9ac;
+    border-bottom: solid 1px #40d9ac;
+    border-right: solid 1px #40d9ac;
+    color: #333;
     background: white;
     border: none;
     letter-spacing: normal;
@@ -753,4 +771,8 @@ a:hover {
   font-size: small;
   background-color: white;
   border: none;
+}
+
+ul{
+  list-style: none;
 }
