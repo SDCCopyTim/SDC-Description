@@ -332,7 +332,7 @@ class App extends React.Component {
                     </ul>
 
                     <div className="CampSite">
-                      <h1>{this.state.currCampSite.Camps}{checkmark}</h1>
+                      <h1>{this.state.currCampSite.Camps}<FaCheckCircle /></h1>
                       <div className="nearby"><b>Nearby:</b> {this.state.currCampSite.Parks}</div>
                     </div>
 

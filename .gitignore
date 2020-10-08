@@ -1,1 +1,4 @@
 node_modules
+
+# Database Password
+database/password.js

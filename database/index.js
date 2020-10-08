@@ -1,8 +1,10 @@
+let password = require('./config.js');
+
 var mysql      = require('mysql');
 var db = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
-  password : 'roootroot',
+  password : password,
   database : 'FecGOTIM'
 });
 
