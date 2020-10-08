@@ -231,7 +231,7 @@ h2{
 }
 
 .nearby{
-  font-size: 8px;
+  font-size: 10px;
 }
 
 .nav {
@@ -768,7 +768,7 @@ a:hover {
 }
 
 .react-calendar__tile:hover{
-  background-color: #40d9ac;
+  background-color: #4199ff;
   color: white;
 }
 
@@ -787,4 +787,9 @@ a:hover {
 
 ul{
   list-style: none;
+}
+
+.checkmark{
+  display: contents;
+  color: #4199ff;
 }

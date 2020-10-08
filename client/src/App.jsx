@@ -54,9 +54,6 @@ class App extends React.Component {
     this.doIncrement = this.doIncrement.bind(this);
   };
   componentDidMount() {
-
-    // axios.get(`/one${this.state.id}`)
-    // axios.get(`http://localhost:3002/one${this.state.id}`)
     axios.get(`http://localhost:3002/one/${this.state.id}`)
       .then((results) => {
         this.setState({
@@ -332,7 +329,7 @@ class App extends React.Component {
                     </ul>
 
                     <div className="CampSite">
-                      <h1>{this.state.currCampSite.Camps}<FaCheckCircle /></h1>
+                      <h1>{this.state.currCampSite.Camps}{checkmark}</h1>
                       <div className="nearby"><b>Nearby:</b> {this.state.currCampSite.Parks}</div>
                     </div>
 
