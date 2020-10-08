@@ -271,8 +271,8 @@ class App extends React.Component {
                 <div className="QuestionsModule" onClick={this.showModal}>
                   Have a Question? <div className="owners">Send {this.state.currCampSite.Owners} a message! </div>
                 </div>
-                <div className="Details">
-                  <div className="details">Details
+                <div className="ttDetails">
+                  <div className="ttdetails">Details
                </div>
                   <div className="checkIn">
                     <ul>
@@ -388,8 +388,8 @@ class App extends React.Component {
                   <div className="QuestionsModule" onClick={this.showModal}>
                     Have a Question? <div className="owners">Send {this.state.currCampSite.Owners} a message! </div>
                   </div>
-                  <div className="Details">
-                    <div className="details">Details
+                  <div className="ttDetails">
+                    <div className="ttdetails">Details
            </div>
                     <div className="checkIn">
                       <ul>
