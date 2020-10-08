@@ -53,6 +53,9 @@ class App extends React.Component {
     this.doIncrement = this.doIncrement.bind(this);
   };
   componentDidMount() {
+    this.setState({
+      id: Math.ceil(Math.random() * Math.ceil(100))
+    })
     // axios.get(`/one${this.state.id}`)
     // axios.get(`http://localhost:3002/one${this.state.id}`)
     axios.get(`http://localhost:3002/one/${this.state.id}`)
@@ -210,7 +213,7 @@ class App extends React.Component {
 
                   <div className="CampSite">
                     <h1>{this.state.currCampSite.Farms}</h1>
-                    <div className="nearby"><b>Nearby:</b> {this.state.currCampSite.Parks}</div>
+                    <div className="nearby"><b>Nearby:</b>{this.state.currCampSite.Parks}</div>
                   </div>
 
                   <div className="Recommends">
@@ -326,7 +329,7 @@ class App extends React.Component {
 
                     <div className="CampSite">
                       <h1>{this.state.currCampSite.Farms}</h1>
-                      <p><b>Nearby:</b> {this.state.currCampSite.Parks}</p>
+                      <div className="nearby"><b>Nearby:</b> {this.state.currCampSite.Parks}</div>
                     </div>
 
                     <div className="Recommends">
