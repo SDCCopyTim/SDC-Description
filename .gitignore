@@ -2,3 +2,5 @@ node_modules
 
 # Database Password
 database/config.js
+
+bundle.js

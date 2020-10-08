@@ -418,9 +418,11 @@ a:hover {
   font-size: 24px;
   padding-left: 5px;
   height: auto;
+  margin-top: 5px;
  }
  .pernight{
-   font-size: 12px;
+  font-size: 10px;
+  padding-left: 10px;
  }
 .CheckInCheckOutGuests {
   grid-area: CheckInCheckOutGuests;
@@ -796,4 +798,11 @@ ul{
   color: #4199ff;
   font-size: 18px;
   margin-bottom: 5px;
+}
+
+.para{
+  color: #972985;
+  background-color: #f3e4ef;
+  padding: 10px;
+  margin-bottom: 10px;
 }

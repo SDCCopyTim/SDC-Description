@@ -12,6 +12,7 @@ import { MdShare } from "react-icons/md"
 import { FaThumbsUp } from "react-icons/fa";
 import { BsChevronBarDown } from "react-icons/bs";
 import { FaCheckCircle } from "react-icons/fa";
+import { ImCheckmark } from "react-icons/im";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Zoom from 'react-reveal/Zoom';
@@ -245,8 +246,10 @@ class App extends React.Component {
                 </div>
                 <br></br>
                 <div className="DescriptionModule">
-                  <p>
-                  </p>{this.state.currCampSite.description}
+                  <div className="para">
+                  <ImCheckmark />  {this.state.currCampSite.Owners}   has self-certified that HipCamp's COVID-19 Safety Standards have been implemented at this listing. See what's been done <u>here</u>.
+                  <br></br>
+                  </div>{this.state.currCampSite.description}
 
                 </div>
 
@@ -361,8 +364,9 @@ class App extends React.Component {
                   </div>
                   <br></br>
                   <div className="DescriptionModule">
-                    <p>
-                    </p>{this.state.currCampSite.description}
+                  <div className="para">
+                      <ImCheckmark />  {this.state.currCampSite.Owners}   has self-certified that HipCamp's COVID-19 Safety Standards have been implemented at this listing. See what's been done <u>here</u>.
+                    </div>{this.state.currCampSite.description}
 
                   </div>
 

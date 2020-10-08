@@ -1,5 +1,6 @@
 const db = require('./index.js');
 const fs = require('fs');
+const path = require('path');
 
 
 // Fill in the definition of insertMockData so that when
@@ -52,7 +53,7 @@ const checkIn = ['After 12PM', 'After 1PM', 'After 2PM', 'After 3PM', 'After 4PM
 const checkOut = ['Before 7AM', 'Before 8AM', 'Before 9AM', 'Before 10AM', 'Before 11AM', 'Before 12PM', 'Before 1PM', 'Before 2PM'];
 const costs = [50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200]
 
-var data = fs.readFileSync(('./paragraphs.txt'), 'utf8', (err, results) => {
+var data = fs.readFileSync(path.join(__dirname, './paragraphs.txt'), 'utf8', (err, results) => {
   if (err) {
     console.log(err);
   } else {
