@@ -247,7 +247,7 @@ class App extends React.Component {
                 <br></br>
                 <div className="DescriptionModule">
                   <div className="para">
-                  <ImCheckmark />  {this.state.currCampSite.Owners}   has self-certified that HipCamp's COVID-19 Safety Standards have been implemented at this listing. See what's been done <u>here</u>.
+                  <ImCheckmark />  {this.state.currCampSite.Owners}   has self-certified that TimCamp's COVID-19 Safety Standards have been implemented at this listing. See what's been done <u>here</u>.
                   <br></br>
                   </div>{this.state.currCampSite.description}
 
@@ -365,7 +365,7 @@ class App extends React.Component {
                   <br></br>
                   <div className="DescriptionModule">
                   <div className="para">
-                      <ImCheckmark />  {this.state.currCampSite.Owners}   has self-certified that HipCamp's COVID-19 Safety Standards have been implemented at this listing. See what's been done <u>here</u>.
+                      <ImCheckmark />  {this.state.currCampSite.Owners}   has self-certified that TimCamp's COVID-19 Safety Standards have been implemented at this listing. See what's been done <u>here</u>.
                     </div>{this.state.currCampSite.description}
 
                   </div>
