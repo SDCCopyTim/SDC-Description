@@ -11,6 +11,7 @@ import { FaCamera } from "react-icons/fa";
 import { MdShare } from "react-icons/md"
 import { FaThumbsUp } from "react-icons/fa";
 import { BsChevronBarDown } from "react-icons/bs";
+import { FaCheckCircle } from "react-icons/fa";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Zoom from 'react-reveal/Zoom';
@@ -22,7 +23,7 @@ class App extends React.Component {
 
     this.state = {
       // id: window.location.pathname,
-      id: 52,
+      id: Math.ceil(Math.random() * Math.ceil(100)),
       campsites: [],
       currCampSite: [],
       photos: [],
@@ -53,9 +54,7 @@ class App extends React.Component {
     this.doIncrement = this.doIncrement.bind(this);
   };
   componentDidMount() {
-    this.setState({
-      id: Math.ceil(Math.random() * Math.ceil(100))
-    })
+
     // axios.get(`/one${this.state.id}`)
     // axios.get(`http://localhost:3002/one${this.state.id}`)
     axios.get(`http://localhost:3002/one/${this.state.id}`)
@@ -179,10 +178,15 @@ class App extends React.Component {
     const { selectedDay, isDisabled, isEmpty } = this.state;
     const checkin = this.state.checkin;
     const checkout = this.state.checkout;
+    var checkmark = '';
     var price = this.state.currCampSite.costs;
 
     if(this.state.value > 0){
       price = price * this.state.value;
+    }
+
+    if(this.state.currCampSite.checkmark === 'true'){
+      checkmark = <div className="checkmark"><FaCheckCircle /></div>
     }
 
 
@@ -212,7 +216,7 @@ class App extends React.Component {
                   </ul>
 
                   <div className="CampSite">
-                    <h1>{this.state.currCampSite.Farms}</h1>
+                    <h1>{this.state.currCampSite.Camps}{checkmark}</h1>
                     <div className="nearby"><b>Nearby:</b>{this.state.currCampSite.Parks}</div>
                   </div>
 
@@ -328,7 +332,7 @@ class App extends React.Component {
                     </ul>
 
                     <div className="CampSite">
-                      <h1>{this.state.currCampSite.Farms}</h1>
+                      <h1>{this.state.currCampSite.Camps}{checkmark}</h1>
                       <div className="nearby"><b>Nearby:</b> {this.state.currCampSite.Parks}</div>
                     </div>
 

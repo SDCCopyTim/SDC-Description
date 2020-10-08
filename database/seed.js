@@ -16,6 +16,8 @@ const Parks = ['Hamilton Park', 'Gautama Park', 'Allen Poe Park', 'Earhart Park'
 
 const Owners = ['Tim', 'Tracy', 'Jason', 'Nick', 'Alphina', 'Alvin', 'Paul', 'Tiffany', 'Jeff', 'Justin', 'Anthony', 'Julian', 'Hilary', 'Mark', 'Polo', 'Kenny', 'Henry', 'Timothy', 'Tomothy', 'Brent', 'Howard', 'Hiep', 'Andy', 'Jessica']
 
+const check = ['true', 'false'];
+
 const Lodging = [
   // {'Canvas tent' : 'fas fa-hotel'},
   // {'Walk to listing' : 'fas fa-blind'},
@@ -119,7 +121,7 @@ fillArr = (campArr) => {
   camp.Owners = Owners[Math.floor(Math.random() * Math.floor(Owners.length))];
   camp.photosOfResponsers = returnPhotos();
   camp.cancellation = `${cancellation[Math.floor(Math.random() * Math.floor(cancellation.length))]}`;
-
+  camp.checkmark = `${check[Math.floor(Math.random() * Math.floor(check.length))]}`;
 
   return camp;
   }
@@ -135,7 +137,7 @@ const createCamps = () => {
 const insertMockData = function() {
   var campsArr = createCamps();
   campsArr.forEach((camp) => {
-    db.query(`INSERT INTO CampSites (States, Farms, Camps, minimumNights, acceptsBookings, checkIn, checkOut, onArrival, description, costs, review, responses, recommended, Parks, Lodging, Essentials, Amentities, Owners, photosOfResponsers, cancellation) VALUES ('${camp.States}', '${camp.Farms}', '${camp.Camps}',  '${camp.minimumNights}', '${camp.acceptsBookings}', '${camp.checkIn}', '${camp.checkOut}', '${camp.onArrival}', '${camp.description}', ${camp.costs}, '${camp.review}', '${camp.responses}', '${camp.recommended}', '${camp.Parks}', '${camp.Lodging}', '${camp.Essentials}', '${camp.Amentities}', '${camp.Owners}', '${camp.photosOfResponsers}', '${camp.cancellation}')`)
+    db.query(`INSERT INTO CampSites (States, Farms, Camps, minimumNights, acceptsBookings, checkIn, checkOut, onArrival, description, costs, review, responses, recommended, Parks, Lodging, Essentials, Amentities, Owners, photosOfResponsers, cancellation, checkmark) VALUES ('${camp.States}', '${camp.Farms}', '${camp.Camps}',  '${camp.minimumNights}', '${camp.acceptsBookings}', '${camp.checkIn}', '${camp.checkOut}', '${camp.onArrival}', '${camp.description}', ${camp.costs}, '${camp.review}', '${camp.responses}', '${camp.recommended}', '${camp.Parks}', '${camp.Lodging}', '${camp.Essentials}', '${camp.Amentities}', '${camp.Owners}', '${camp.photosOfResponsers}', '${camp.cancellation}', '${camp.checkmark}')`)
   })
 };
 
