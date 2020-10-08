@@ -794,4 +794,6 @@ ul{
 .checkmark{
   display: contents;
   color: #4199ff;
+  font-size: 18px;
+  margin-bottom: 5px;
 }
