@@ -16,7 +16,7 @@
 }
 .LeftModule{
   grid-area: LeftModule;
-  margin-top: 20px;
+
   display: grid;
   width: 720px;
   justify-content: space-evenly;
@@ -390,7 +390,7 @@ a:hover {
 }
 .Calendar {
   grid-area: Calendar;
-  height: 800px;
+  height: 900px;
   width: 360px;
   justify-content: space-evenly;
   display: flex;
