@@ -270,7 +270,9 @@ class App extends React.Component {
                       </div>
                       <div className='B' onClick={this.showModal}><a className='b'><BsChevronBarDown /><div className="save">Save To List</div></a>
                       </div>
-                      <div className='C'><a className='c'><MdShare /></a>
+                      <div className='C'><a className='c'><a data-tip html={true} data-event='click focus'><MdShare />
+                        </a></a>
+                          <ReactTooltip className="sharetool" backgroundColor="white" textColor="#333" globalEventOff='click'>{sharetool}</ReactTooltip>
                       </div>
                     </div>
                   </div>
