@@ -386,7 +386,7 @@ a:hover {
     "Or"
     "SignIn"
     "SignUp"
-    "close";
+    "ttclose";
 }
 .Calendar {
   grid-area: Calendar;
@@ -579,8 +579,8 @@ a:hover {
   display: none;
 }
 
-.close {
-  grid-area: close;
+.ttclose {
+  grid-area: ttclose;
   justify-content: space-evenly ;
   display: flex;
   color: #aaaaaa;
@@ -589,8 +589,8 @@ a:hover {
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.ttclose:hover,
+.ttclose:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
@@ -808,3 +808,37 @@ ul{
   padding: 10px;
   margin-bottom: 10px;
 }
+
+a{
+  display:flex;
+}
+
+.sharetool {
+  padding-top: 10px;
+  line-height: 3;
+  max-width: -webkit-fill-available;
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  width: 250px;
+  flex-direction: row;
+  grid-template-rows: 125px 125px;
+  gap: 10px 10px;
+  align-items: center;
+  margin: auto;
+  justify-content: space-evenly;
+  grid-template-areas:
+    "leftsharetool rightsharetool";
+}
+
+.leftsharetool {
+  grid-area: leftsharetool;
+  display: flex;
+  margin-left: -50px;
+}
+
+.rightsharetool {
+  grid-area: rightsharetool;
+  display: flex;
+}
+

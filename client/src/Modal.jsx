@@ -29,7 +29,7 @@ const Modal = ({handleClose, show}) => {
           <div className="smolSignIn">Sign in with your email address</div>
           </div>
         <div className="SignUp">Don't have a Hipcamp account? <b> Sign up!</b></div>
-        <div className="close" onClick={handleClose}>x</div>
+        <div className="ttclose" onClick={handleClose}>x</div>
       </div>
     </Zoom>
     </div>

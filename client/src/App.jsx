@@ -13,9 +13,19 @@ import { FaThumbsUp } from "react-icons/fa";
 import { BsChevronBarDown } from "react-icons/bs";
 import { FaCheckCircle } from "react-icons/fa";
 import { ImCheckmark } from "react-icons/im";
+import { AiFillFacebook } from "react-icons/ai";
+import { AiFillTwitterSquare } from "react-icons/ai";
+import { RiPinterestFill } from "react-icons/ri";
+import { MdEmail } from "react-icons/md";
+import { FaLinkedin } from "react-icons/fa";
+import { SiReddit } from "react-icons/si";
+import { FaFacebookMessenger } from "react-icons/fa";
+import { FaTumblr } from "react-icons/fa";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Zoom from 'react-reveal/Zoom';
+import ReactTooltip from 'react-tooltip';
+
 
 
 class App extends React.Component {
@@ -178,13 +188,33 @@ class App extends React.Component {
     const checkout = this.state.checkout;
     var checkmark = '';
     var price = this.state.currCampSite.costs;
+    const sharetool = <div className="sharetool">
+      <div className="leftsharetool">
+        <ul>
+          <li><AiFillFacebook font-size="22px" color="#3b5998"/>Share</li>
+          <li><AiFillTwitterSquare font-size="22px" color="#00aced"/> Tweet</li>
+          <li><RiPinterestFill font-size="22px" color="#cb2027"/> Pin</li>
+          <li><MdEmail font-size="22px" /> Email</li>
+        </ul>
+      </div>
+      <div className="rightsharetool">
+        <ul>
+          <li><FaLinkedin font-size="22px" color="#007bb6" />LinkedIn</li>
+          <li><SiReddit font-size="22px" color="#007bb6" /> Reddit</li>
+          <li><FaFacebookMessenger font-size="22px" color="#1880ff" /> Messenger</li>
+          <li><FaTumblr font-size="22px" color="#365171" /> Tumblr</li>
+        </ul>
+      </div>
+    </div>
 
-    if(this.state.value > 0){
+    if (this.state.value > 0) {
       price = price * this.state.value;
     }
 
-    if(this.state.currCampSite.checkmark === 'true'){
-      checkmark = <div className="checkmark"><FaCheckCircle /></div>
+    if (this.state.currCampSite.checkmark === 'true') {
+      checkmark = <div className="checkmark"><a data-tip data-for="checkmark"><FaCheckCircle /></a>
+        <ReactTooltip id="checkmark"><span>This listing's accuracy <br></br>has been verified by a <br></br>TimCamp Photographer <br></br>who has visited and <br></br>photographed the property.</span></ReactTooltip>
+      </div>
     }
 
 
@@ -221,11 +251,13 @@ class App extends React.Component {
                   <div className="Recommends">
 
                     <div className="Recommend">
-                      <a><FaThumbsUp />{this.state.currCampSite.recommended} </a>
-                      <div className="color">Recommend
-                    </div>
-                    </div>
+                      <a data-tip data-for="recommend">
+                        <a className="thumbs"><FaThumbsUp />{this.state.currCampSite.recommended} </a>
+                        <div className="color">Recommend
+</div></a>
 
+                      <ReactTooltip id="recommend"><span>This recommendation is <br></br>based on responses from <br></br>the TimCamp community <br></br>members who have verified <br></br>stays at this listing.</span></ReactTooltip>
+                    </div>
                     <div className="Photos">
                       <img src={this.state.photos[0]} className="circle" id="circle1" />
                       <img src={this.state.photos[1]} className="circle" id="circle2" />
@@ -247,7 +279,7 @@ class App extends React.Component {
                 <br></br>
                 <div className="DescriptionModule">
                   <div className="para">
-                  <ImCheckmark />  {this.state.currCampSite.Owners}   has self-certified that TimCamp's COVID-19 Safety Standards have been implemented at this listing. See what's been done <u>here</u>.
+                    <ImCheckmark />  {this.state.currCampSite.Owners}   has self-certified that TimCamp's COVID-19 Safety Standards have been implemented at this listing. See what's been done <u>here</u>.
                   <br></br>
                   </div>{this.state.currCampSite.description}
 
@@ -307,9 +339,6 @@ class App extends React.Component {
         ) : (
 
 
-
-
-
             <div>
               <Modal id="modal" show={this.state.show} handleClose={this.hideModal} onClick={this.showModal} />
 
@@ -339,9 +368,12 @@ class App extends React.Component {
                     <div className="Recommends">
 
                       <div className="Recommend">
+                      <a data-tip data-for="recommend">
                         <a className="thumbs"><FaThumbsUp />{this.state.currCampSite.recommended} </a>
                         <div className="color">Recommend
-                </div>
+                </div></a>
+
+                <ReactTooltip id="recommend"><span>This recommendation is <br></br>based on responses from <br></br>the TimCamp community <br></br>members who have verified <br></br>stays at this listing.</span></ReactTooltip>
                       </div>
 
                       <div className="Photos">
@@ -356,7 +388,10 @@ class App extends React.Component {
                         </div>
                         <div className='B' onClick={this.showModal}><a className='b'><BsChevronBarDown /><div className="save">Save To List</div></a>
                         </div>
-                        <div className='C'><a className='c'><MdShare /></a>
+                        <div className='C'><a className='c'><a data-tip html={true} data-event='click focus'><MdShare />
+                        </a></a>
+                          <ReactTooltip className="sharetool" backgroundColor="white" textColor="#333" globalEventOff='click'>{sharetool}</ReactTooltip>
+
                         </div>
                       </div>
                     </div>
@@ -364,7 +399,7 @@ class App extends React.Component {
                   </div>
                   <br></br>
                   <div className="DescriptionModule">
-                  <div className="para">
+                    <div className="para">
                       <ImCheckmark />  {this.state.currCampSite.Owners}   has self-certified that TimCamp's COVID-19 Safety Standards have been implemented at this listing. See what's been done <u>here</u>.
                     </div>{this.state.currCampSite.description}
 
@@ -420,12 +455,12 @@ class App extends React.Component {
                       <div className="checkout" onClick={this.selectDateOut}><b>Check Out</b><br></br>
               Select Date</div>
                       <div className="guests"><b>Guests</b><br></br>
-                      <div>
-          <button onClick={this.doDecrement} className="minus">-</button>
-          <input type="text" className="number" value={this.state.value }></input>
-          <button onClick={this.doIncrement} className="plus">+</button>
-          </div>
-              </div>
+                        <div>
+                          <button onClick={this.doDecrement} className="minus">-</button>
+                          <input type="text" className="number" value={this.state.value}></input>
+                          <button onClick={this.doIncrement} className="plus">+</button>
+                        </div>
+                      </div>
                     </div>
                     <div className="InstantBook" onClick={this.showModal}>Instant Book</div>
                   </div>
@@ -441,4 +476,4 @@ class App extends React.Component {
 };
 
 
-  export default App;
+export default App;
