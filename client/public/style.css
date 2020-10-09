@@ -16,7 +16,7 @@
 }
 .LeftModule{
   grid-area: LeftModule;
-
+  margin: -110px;
   display: grid;
   width: 720px;
   justify-content: space-evenly;
