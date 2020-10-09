@@ -140,7 +140,7 @@
  .color{
    color: #333333;
    font-weight: 500;
-   display: flex;
+   display: contents;
    padding-top: 2px;
    padding-left: 5px;
 }
@@ -809,9 +809,7 @@ ul{
   margin-bottom: 10px;
 }
 
-a{
-  display:flex;
-}
+
 
 .sharetool {
   padding-top: 10px;
