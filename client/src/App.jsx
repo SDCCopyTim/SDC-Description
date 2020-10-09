@@ -47,7 +47,10 @@ class App extends React.Component {
       showEssentials: false,
       checkin: false,
       checkout: false,
-      checkIndate: new Date(),
+      checkInDate: new Date(),
+      checkOutDate: new Date(),
+      hascheckindate: false,
+      hascheckoutdate: false,
       value: 1
     };
     this.showModal = this.showModal.bind(this);
@@ -100,14 +103,15 @@ class App extends React.Component {
     if (this.state.checkin === true) {
       this.setState({
         checkInDate: date,
-        checkin: !this.state.checkin
+        checkin: !this.state.checkin,
+        hascheckindate: true
       })
-      console.log(this.state.checkInDate);
     }
     else if (this.state.checkout === true) {
       this.setState({
         checkOutDate: date,
-        checkout: !this.state.checkout
+        checkout: !this.state.checkout,
+        hascheckoutdate: true
       })
     }
   }
@@ -182,12 +186,31 @@ class App extends React.Component {
   }
 
 
+
   render() {
     const { selectedDay, isDisabled, isEmpty } = this.state;
     const checkin = this.state.checkin;
     const checkout = this.state.checkout;
+    const hascheckindate = this.state.hascheckindate;
+    const hascheckoutdate = this.state.hascheckoutdate;
     var checkmark = '';
     var price = this.state.currCampSite.costs;
+
+    var checkindate = '';
+    var checkoutdate = '';
+
+    if(hascheckindate === true){
+      checkindate = this.state.checkInDate.toLocaleDateString()
+    } else {
+      checkindate = 'Select date'
+    }
+    if(hascheckoutdate === true){
+      checkoutdate = this.state.checkOutDate.toLocaleDateString();
+    } else {
+      checkoutdate = 'Select date'
+    }
+
+
     const sharetool = <div className="sharetool">
       <div className="leftsharetool">
         <ul>
@@ -329,7 +352,7 @@ class App extends React.Component {
               <div className="Calendar">
                 <div className="newCalendar">
 
-                  <Calendar onChange={this.onChange} value={this.state.date} />
+                  <Calendar onChange={this.onChange} value={this.state.date} tileDisabled={({defaultActiveStartDate, date, view }) => date.getDay() === 0}/>
                 </div>
               </div>
             </div>
@@ -453,9 +476,9 @@ class App extends React.Component {
                     </div>
                     <div className="CheckInCheckOutGuests">
                       <div className="checkin" onClick={this.selectDateIn}><b>Check In</b><br></br>
-              Select Date</div>
+              {checkindate}</div>
                       <div className="checkout" onClick={this.selectDateOut}><b>Check Out</b><br></br>
-              Select Date</div>
+              {checkoutdate}</div>
                       <div className="guests"><b>Guests</b><br></br>
                         <div>
                           <button onClick={this.doDecrement} className="minus">-</button>
