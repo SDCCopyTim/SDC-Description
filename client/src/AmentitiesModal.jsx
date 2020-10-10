@@ -26,7 +26,7 @@ const AmentitiesModal = (props) => {
       pic = <FaWater />;
       picArr.push(pic);
     }
-    if(props.amentities[i] === 'No showers'){
+    if(props.amentities[i] === 'Jacuzzis Available'){
       pic = <FaShower />;
       picArr.push(pic);
     }
@@ -47,7 +47,7 @@ const AmentitiesModal = (props) => {
     <div className={showHideClassName}>
       <div className="AmentitiesModal">
       <div className="closeAmentities" onClick={props.handleClose}>X</div>
-      <b>Amentities</b>
+      <b>Amenities</b>
       <div className="AmentitiesList">
       {props.amentities.map((item,index) => (
           <div className="smolModalItem">{picArr[index]} {item} </div>

@@ -68,6 +68,7 @@ class App extends React.Component {
     this.doIncrement = this.doIncrement.bind(this);
   };
   componentDidMount() {
+
     axios.get(`http://localhost:3002/one/${this.state.id}`)
       .then((results) => {
         this.setState({
@@ -78,7 +79,6 @@ class App extends React.Component {
           amentities: results.data[0].Amentities.split(','),
           essentials: results.data[0].Essentials.split(',')
         })
-        console.log(results.data);
       })
       .catch((err) => {
         console.log(err)
@@ -320,7 +320,7 @@ class App extends React.Component {
                   <div className="Essentials"><b>Essentials</b>
                     <Essentials essentials={this.state.essentials} showEssentialsModal={this.showEssentialsModal} />
                   </div>
-                  <div className="Amentities"><b>Amentities</b>
+                  <div className="Amentities"><b>Amenities</b>
                     <Amentities amentities={this.state.amentities} showAmentitiesModal={this.showAmentitiesModal} />
                   </div>
                 </div>
@@ -352,7 +352,7 @@ class App extends React.Component {
               <div className="Calendar">
                 <div className="newCalendar">
 
-                  <Calendar onChange={this.onChange} value={this.state.date} tileDisabled={({defaultActiveStartDate, date, view }) => date.getDay() === 0}/>
+                  <Calendar onChange={this.onChange} value={this.state.date} />
                 </div>
               </div>
             </div>

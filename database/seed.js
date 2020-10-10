@@ -20,29 +20,15 @@ const Owners = ['Tim', 'Tracy', 'Jason', 'Nick', 'Alphina', 'Alvin', 'Paul', 'Ti
 const check = ['true', 'false'];
 
 const Lodging = [
-  // {'Canvas tent' : 'fas fa-hotel'},
-  // {'Walk to listing' : 'fas fa-blind'},
-  // {'Beds available' : 'fas fa-bed'},
-  // {'Wheelchair accessable' : 'fab fa-accessible-icon'},
-  // {'Campground' : 'far fa-campground'}
   'Canvas tent', 'Walk to listing', 'Beds available', 'Wheelchair accessible', 'Campground'
 ]
 
 const Essentials = [
-  // {'Campfires allowed' : 'fas fa-fire'},
-  // {'Toilet available' : 'fas fa-toilet-paper'},
-  // {'Pets allowed' : 'fas fa-dog'},
-  // {'Showers available' : 'fas fa-shower'},
-  // {'Free dinner' : 'fas fa-hamburger'}
-  'Campfires allowed', 'Toilet available', 'Pets allowed', 'Showers available', 'Free dinner'
+ 'Campfires allowed', 'Toilet available', 'Pets allowed', 'Showers available', 'Free dinner'
 ]
 
 const Amentities = [
-  // {'Portable water available' : 'fas fa-water'},
-  // {'No showers': 'fas fa-shower'},
-  // {'No Wifi' : 'fas fa-wifi'},
-  // {'Pack it out' : 'fas fa-pizz-slice'}
-  'Portable water available', 'No showers', 'No WiFi', 'Pack it out', 'Has Wifi'
+ 'Portable water available', 'Jaccuzis Included', 'No WiFi', 'Pack it out', 'Has Wifi'
 ]
 
 const photosOfResponsers =[]
@@ -93,8 +79,17 @@ getRando = () => {
 
 fillArr = (campArr) => {
   var arr = [];
+  var repeat = false;
   for(var i = 0; i < getRando(); i++){
-    arr.push(campArr[Math.floor(Math.random() * Math.floor(campArr.length))]);
+    var temp = campArr[Math.floor(Math.random() * Math.floor(campArr.length))];
+    for(var j = 0; j < arr.length; j++){
+      if(arr[j] === temp){
+      repeat = true;
+      }
+    }
+    if(repeat === false){
+      arr.push(temp);
+    }
   }
   return arr;
 }
