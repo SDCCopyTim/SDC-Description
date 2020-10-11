@@ -30,7 +30,7 @@ const AmentitiesModal = (props) => {
       pic = <FaShower />;
       picArr.push(pic);
     }
-    if(props.amentities[i] === 'No WiFi'){
+    if(props.amentities[i] === 'No Free WiFi'){
       pic = <BiWifiOff />;
       picArr.push(pic);
     }

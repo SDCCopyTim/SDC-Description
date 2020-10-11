@@ -28,7 +28,7 @@ const Essentials = [
 ]
 
 const Amentities = [
- 'Portable water available', 'Jaccuzis Included', 'No WiFi', 'Pack it out', 'Has Wifi'
+ 'Portable water available', 'Jaccuzis Included', 'No Free WiFi', 'Pack it out', 'Has Wifi'
 ]
 
 const photosOfResponsers =[]

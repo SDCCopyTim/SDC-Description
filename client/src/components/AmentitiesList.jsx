@@ -15,7 +15,7 @@ const AmentitiesList = (props) => {
   if(props.item === 'Jaccuzis Available'){
     pic = <FaShower />
   }
-  if(props.item === 'No WiFi'){
+  if(props.item === 'No Free WiFi'){
     pic = <BiWifiOff />
   }
   if(props.item === 'Pack it out'){

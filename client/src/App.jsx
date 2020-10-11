@@ -53,6 +53,9 @@ class App extends React.Component {
       hascheckindate: false,
       hascheckoutdate: false,
       today : new Date(),
+      day: '',
+      month: '',
+      year: '',
       value: 1
     };
     this.showModal = this.showModal.bind(this);
@@ -71,7 +74,11 @@ class App extends React.Component {
     this.tileDisabled = this.tileDisabled.bind(this);
   };
   componentDidMount() {
-
+    this.setState({
+      day: this.state.today.getDate(),
+      month: this.state.today.getMonth(),
+      year: this.state.today.getFullYear()
+    })
     axios.get(`http://localhost:3002/one/${this.state.id}`)
       .then((results) => {
         this.setState({
@@ -359,10 +366,23 @@ class App extends React.Component {
               <div className="Calendar">
                 <div className="newCalendar">
 
-                  <Calendar onChange={this.onChange} value={this.state.date} tileDisabled={({activeStartDate, date}) =>{
+                  <Calendar onChange={this.onChange} showNeighboringMonth={false} value={this.state.date} tileDisabled={({activeStartDate, date}) =>{
                     if(this.state.checkin === true){
+                      console.log(this.state.day)
+                      for(var a = 1; a < this.state.month; a++){
+                        if(date.getMonth() === a){
+                          return true;
+                        }
+                      }
+
+                      if(date.getMonth() === this.state.month) {
+                        for(var j = 1; j < this.state.day; j++) {
+                          if(date.getDate() === j ){
+                            return true;
+                          }
+                        }
+                      }
                       for(var i = Math.floor(Math.random() * (20) + 0); i > 0; i--){
-                        console.log(i);
                         if(date.getDate() === Math.floor(Math.random() * (30) + 1)) {
                           return true;
                         }
