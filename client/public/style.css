@@ -840,3 +840,9 @@ ul{
   display: flex;
 }
 
+.react-calendar__tile:disabled, .react-calendar__month-view__days__day:disabled, .react-calendar__month-view__days__day--neighboringMonth:disabled{
+  color: lightgrey;
+  background-color: lightslategray;
+
+}
+

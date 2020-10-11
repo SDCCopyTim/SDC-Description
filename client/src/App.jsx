@@ -25,6 +25,7 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import Zoom from 'react-reveal/Zoom';
 import ReactTooltip from 'react-tooltip';
+import moment from 'moment';
 
 
 
@@ -51,6 +52,7 @@ class App extends React.Component {
       checkOutDate: new Date(),
       hascheckindate: false,
       hascheckoutdate: false,
+      today : new Date(),
       value: 1
     };
     this.showModal = this.showModal.bind(this);
@@ -66,6 +68,7 @@ class App extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.doDecrement = this.doDecrement.bind(this);
     this.doIncrement = this.doIncrement.bind(this);
+    this.tileDisabled = this.tileDisabled.bind(this);
   };
   componentDidMount() {
 
@@ -183,6 +186,10 @@ class App extends React.Component {
         value: this.state.value + 1,
       });
     }
+  }
+
+  tileDisabled({date}){
+    date = moment(date)
   }
 
 
@@ -352,7 +359,19 @@ class App extends React.Component {
               <div className="Calendar">
                 <div className="newCalendar">
 
-                  <Calendar onChange={this.onChange} value={this.state.date} />
+                  <Calendar onChange={this.onChange} value={this.state.date} tileDisabled={({activeStartDate, date}) =>{
+                    if(this.state.checkin === true){
+                      for(var i = Math.floor(Math.random() * (20) + 0); i > 0; i--){
+                        console.log(i);
+                        if(date.getDate() === Math.floor(Math.random() * (30) + 1)) {
+                          return true;
+                        }
+                      }
+                    }
+                    if(this.state.checkout === true){
+                      return false;
+                    }
+                  }} />
                 </div>
               </div>
             </div>
