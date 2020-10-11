@@ -389,7 +389,18 @@ class App extends React.Component {
                       }
                     }
                     if(this.state.checkout === true){
-                      return false;
+                      for (var a = 1; a < this.state.month; a++) {
+                        if (date.getMonth() === a) {
+                          return true;
+                        }
+                      }
+                      if(date.getMonth() === this.state.month) {
+                        for(var j = 1; j < this.state.day; j++) {
+                          if(date.getDate() === j ){
+                            return true;
+                          }
+                        }
+                      }
                     }
                   }} />
                 </div>
