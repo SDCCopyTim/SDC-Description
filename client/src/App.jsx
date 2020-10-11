@@ -401,6 +401,13 @@ class App extends React.Component {
                           }
                         }
                       }
+
+                      for(var c = 1; c < this.state.checkInDate.getDate(); c++) {
+                        if(date.getDate() === c && date.getMonth() <= this.state.checkInDate.getMonth()){
+                           return true;
+                        }
+
+                      }
                     }
                   }} />
                 </div>

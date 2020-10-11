@@ -726,7 +726,9 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   height: 150px;
-  border: 1px solid #40d9ac;
+  border-left: 1px solid #333333;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
 }
 
 .react-calendar__month-view__weekdays{
