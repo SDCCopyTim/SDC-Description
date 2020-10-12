@@ -26,7 +26,7 @@ const AmentitiesModal = (props) => {
       pic = <FaWater />;
       picArr.push(pic);
     }
-    if(props.amentities[i] === 'Jacuzzis Available'){
+    if(props.amentities[i] === 'Jaccuzis Included'){
       pic = <FaShower />;
       picArr.push(pic);
     }
