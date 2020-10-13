@@ -11,6 +11,16 @@ const models = {
     })
   },
 
+  getAll: (callback) => {
+    db.query(`SELECT * From CampSites`, (err, results) => {
+      if (err) {
+        callback(err);
+      } else {
+        callback(null, results);
+      }
+    })
+  },
+
   addOne: (data, callback) => {
     const {
       States,
@@ -42,17 +52,28 @@ const models = {
         } else {
           callback(null, results);
         }
-      })
+      });
   },
 
-  getAll: (callback) => {
-    db.query(`SELECT * From CampSites`, (err, results) => {
+  updateOne: (id, data, callback) => {
+    let queryStr = `UPDATE CampSites SET ${Object.keys(data)[0]}="${Object.values(data)[0]}" WHERE id=${id}`;
+    db.query(queryStr, (err, results) => {
       if (err) {
         callback(err);
       } else {
         callback(null, results);
       }
     })
+  },
+
+  deleteOne: (id, callback) => {
+    db.query(`DELETE FROM CampSites WHERE id=${id}`, (err, results) => {
+      if (err) {
+        callback(err);
+      } else {
+        callback(null, results);
+      }
+    });
   }
 
 }

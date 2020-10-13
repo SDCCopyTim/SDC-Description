@@ -6,9 +6,11 @@ router
   .route('/one')
   .post(controllers.addOne)
 
-router
+  router
   .route('/one/:id')
   .get(controllers.getOne)
+  .put(controllers.updateOne)
+  .delete(controllers.deleteOne)
 
 router
   .route('/all')
