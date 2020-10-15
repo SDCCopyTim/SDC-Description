@@ -4,3 +4,7 @@ node_modules
 database/config.js
 
 bundle.js
+
+# 10 million record file
+records.csv
+hundred.csv
