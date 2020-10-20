@@ -79,7 +79,7 @@ function writeTenMillionRecords(writer, encoding, callback) {
       const cancellation = `${cancellationList[Math.floor(Math.random() * Math.floor(cancellationList.length))]}`;
       const checkmark = `${faker.random.boolean()}`;
 
-      const data = `${campId},${state},${farm},${camp},${minimumNights},${acceptsBookings},${checkIn},${checkOut},${onArrival},${costs},${description},${review},${responses},${recommended},"${Parks}","${Lodging}","${Essentials}","${Amentities}",${Owners},"${photosOfResponsers}",${cancellation},${checkmark}\n`;
+      const data = `${campId},"${state}","${farm}","${camp}","${minimumNights}","${acceptsBookings}","${checkIn}","${checkOut}","${onArrival}",${costs},"${description}","${review}","${responses}","${recommended}","${Parks}","${Lodging}","${Essentials}","${Amentities}",${Owners},"${photosOfResponsers}","${cancellation}","${checkmark}"\n`;
 
       if (i === 0) {
         writer.write(data, encoding, callback);
