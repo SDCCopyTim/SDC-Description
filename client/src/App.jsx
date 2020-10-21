@@ -35,7 +35,7 @@ class App extends React.Component {
 
     this.state = {
       // id: window.location.pathname,
-      id: Math.ceil(Math.random() * Math.ceil(100)),
+      id: Math.ceil(Math.random() * Math.ceil(10000000)),
       campsites: [],
       currCampSite: [],
       photos: [],
@@ -81,13 +81,14 @@ class App extends React.Component {
     })
     axios.get(`http://localhost:3002/one/${this.state.id}`)
       .then((results) => {
+        console.log(results);
         this.setState({
           campsites: results.data,
           currCampSite: results.data[0],
-          photos: results.data[0].photosOfResponsers.split(','),
-          lodging: results.data[0].Lodging.split(','),
-          amentities: results.data[0].Amentities.split(','),
-          essentials: results.data[0].Essentials.split(',')
+          photos: results.data[0].photosofresponsers.split(','),
+          lodging: results.data[0].lodging.split(','),
+          amentities: results.data[0].amentities.split(','),
+          essentials: results.data[0].essentials.split(',')
         })
       })
       .catch((err) => {
@@ -274,15 +275,15 @@ class App extends React.Component {
                   <ul className="nav">
                     <li><a>United States</a></li>
                     <li><a> > </a></li>
-                    <li><a href="#States">{this.state.currCampSite.States}</a></li>
+                    <li><a href="#States">{this.state.currCampSite.states}</a></li>
                     <li><a> > </a></li>
-                    <li><a href="#Farms">{this.state.currCampSite.Farms}</a></li>
+                    <li><a href="#Farms">{this.state.currCampSite.farms}</a></li>
                     <li><a> > </a></li>
                   </ul>
 
                   <div className="CampSite">
-                    <h1>{this.state.currCampSite.Camps}{checkmark}</h1>
-                    <div className="nearby"><b>Nearby:</b>{this.state.currCampSite.Parks}</div>
+                    <h1>{this.state.currCampSite.camps}{checkmark}</h1>
+                    <div className="nearby"><b>Nearby:</b>{this.state.currCampSite.parks}</div>
                   </div>
 
                   <div className="Recommends">
@@ -318,7 +319,7 @@ class App extends React.Component {
                 <br></br>
                 <div className="DescriptionModule">
                   <div className="para">
-                    <ImCheckmark />  {this.state.currCampSite.Owners}   has self-certified that TimCamp's COVID-19 Safety Standards have been implemented at this listing. See what's been done <u>here</u>.
+                    <ImCheckmark />  {this.state.currCampSite.owners}   has self-certified that TimCamp's COVID-19 Safety Standards have been implemented at this listing. See what's been done <u>here</u>.
                   <br></br>
                   </div>{this.state.currCampSite.description}
 
@@ -340,23 +341,23 @@ class App extends React.Component {
                 </div>
 
                 <div className="QuestionsModule" onClick={this.showModal}>
-                  Have a Question? <div className="owners">Send {this.state.currCampSite.Owners} a message! </div>
+                  Have a Question? <div className="owners">Send {this.state.currCampSite.owners} a message! </div>
                 </div>
                 <div className="ttDetails">
                   <div className="ttdetails">Details
                </div>
                   <div className="checkIn">
                     <ul>
-                      <li>Check In: {this.state.currCampSite.checkIn}</li>
-                      <li>Check Out: {this.state.currCampSite.checkOut}</li>
+                      <li>Check In: {this.state.currCampSite.checkin}</li>
+                      <li>Check Out: {this.state.currCampSite.checkout}</li>
                       <li>Cancellation Policy: {this.state.currCampSite.cancellation}</li>
                     </ul>
                   </div>
                   <div className="onArrival">
                     <ul>
-                      <li>On Arrival: {this.state.currCampSite.onArrival}</li>
-                      <li>Minimum Nights: {this.state.currCampSite.minimumNights}</li>
-                      <li>Accepts Bookings: {this.state.currCampSite.acceptsBookings}</li>
+                      <li>On Arrival: {this.state.currCampSite.onarrival}</li>
+                      <li>Minimum Nights: {this.state.currCampSite.minimumnights}</li>
+                      <li>Accepts Bookings: {this.state.currCampSite.acceptsbookings}</li>
                     </ul>
                   </div>
 
@@ -436,15 +437,15 @@ class App extends React.Component {
                     <ul className="nav">
                       <li><a>United States</a></li>
                       <li><a> > </a></li>
-                      <li><a href="#States">{this.state.currCampSite.States}</a></li>
+                      <li><a href="#States">{this.state.currCampSite.states}</a></li>
                       <li><a> > </a></li>
-                      <li><a href="#Farms">{this.state.currCampSite.Farms}</a></li>
+                      <li><a href="#Farms">{this.state.currCampSite.farms}</a></li>
                       <li><a> > </a></li>
                     </ul>
 
                     <div className="CampSite">
-                      <h1>{this.state.currCampSite.Camps}{checkmark}</h1>
-                      <div className="nearby"><b>Nearby:</b> {this.state.currCampSite.Parks}</div>
+                      <h1>{this.state.currCampSite.camps}{checkmark}</h1>
+                      <div className="nearby"><b>Nearby:</b> {this.state.currCampSite.parks}</div>
                     </div>
 
                     <div className="Recommends">
@@ -482,7 +483,7 @@ class App extends React.Component {
                   <br></br>
                   <div className="DescriptionModule">
                     <div className="para">
-                      <ImCheckmark />  {this.state.currCampSite.Owners}   has self-certified that TimCamp's COVID-19 Safety Standards have been implemented at this listing. See what's been done <u>here</u>.
+                      <ImCheckmark />  {this.state.currCampSite.owners}   has self-certified that TimCamp's COVID-19 Safety Standards have been implemented at this listing. See what's been done <u>here</u>.
                     </div>{this.state.currCampSite.description}
 
                   </div>
@@ -503,23 +504,23 @@ class App extends React.Component {
                   </div>
 
                   <div className="QuestionsModule" onClick={this.showModal}>
-                    Have a Question? <div className="owners">Send {this.state.currCampSite.Owners} a message! </div>
+                    Have a Question? <div className="owners">Send {this.state.currCampSite.owners} a message! </div>
                   </div>
                   <div className="ttDetails">
                     <div className="ttdetails">Details
            </div>
                     <div className="checkIn">
                       <ul>
-                        <li><b>Check In:</b> {this.state.currCampSite.checkIn}</li>
-                        <li><b>Check Out:</b> {this.state.currCampSite.checkOut}</li>
+                        <li><b>Check In:</b> {this.state.currCampSite.checkin}</li>
+                        <li><b>Check Out:</b> {this.state.currCampSite.checkout}</li>
                         <li><b>Cancellation Policy:</b> {this.state.currCampSite.cancellation}</li>
                       </ul>
                     </div>
                     <div className="onArrival">
                       <ul>
-                        <li><b>On Arrival:</b> {this.state.currCampSite.onArrival}</li>
-                        <li><b>Minimum Nights:</b> {this.state.currCampSite.minimumNights}</li>
-                        <li><b>Accepts Bookings:</b> {this.state.currCampSite.acceptsBookings}</li>
+                        <li><b>On Arrival:</b> {this.state.currCampSite.onarrival}</li>
+                        <li><b>Minimum Nights:</b> {this.state.currCampSite.minimumnights}</li>
+                        <li><b>Accepts Bookings:</b> {this.state.currCampSite.acceptsbookings}</li>
                       </ul>
                     </div>
 

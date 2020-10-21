@@ -1,4 +1,4 @@
-const db = require('./index.js');
+const db = require('./pg.index.js');
 
 const models = {
   getOne: (id, callback) => {
@@ -6,7 +6,7 @@ const models = {
       if (err) {
         callback(err);
       } else {
-        callback(null, results);
+        callback(null, results.rows);
       }
     })
   },
