@@ -11,16 +11,6 @@ const models = {
     })
   },
 
-  getAll: (callback) => {
-    db.query(`SELECT * From CampSites`, (err, results) => {
-      if (err) {
-        callback(err);
-      } else {
-        callback(null, results);
-      }
-    })
-  },
-
   addOne: (data, callback) => {
     const {
       States,
