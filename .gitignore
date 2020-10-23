@@ -8,3 +8,7 @@ bundle.js
 # 10 million record file
 records.csv
 hundred.csv
+
+# New Relic
+newrelic.js
+newrelic_agent.log
