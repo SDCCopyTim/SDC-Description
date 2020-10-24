@@ -1,13 +1,12 @@
 const db = require('./pg.index.js');
 
 const models = {
-  getOne: (id, callback) => {
-    db.query(`SELECT * FROM CampSites WHERE id = ${id}`, (err, results) => {
-      if (err) {
-        callback(err);
-      } else {
-        callback(null, results.rows);
-      }
+  getOne: (id) => {
+    return new Promise((resolve, reject) => {
+      db
+        .query(`SELECT * FROM CampSites WHERE id = ${id}`)
+        .then(res => resolve(res.rows[0]))
+        .catch(e => reject(e.stack));
     })
   },
 

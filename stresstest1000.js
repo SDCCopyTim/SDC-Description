@@ -8,7 +8,7 @@ export let options = {
     { duration: '30s', target: 600 },
     { duration: '30s', target: 800 },
     { duration: '30s', target: 1000 },
-    { duration: '3m', target: 1000 },
+    { duration: '5m', target: 1000 },
     { duration: '1m', target: 500 },
     { duration: '1m', target: 0 },
   ] }

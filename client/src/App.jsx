@@ -84,11 +84,11 @@ class App extends React.Component {
         console.log(results);
         this.setState({
           campsites: results.data,
-          currCampSite: results.data[0],
-          photos: results.data[0].photosofresponsers.split(','),
-          lodging: results.data[0].lodging.split(','),
-          amentities: results.data[0].amentities.split(','),
-          essentials: results.data[0].essentials.split(',')
+          currCampSite: results.data,
+          photos: results.data.photosofresponsers.split(','),
+          lodging: results.data.lodging.split(','),
+          amentities: results.data.amentities.split(','),
+          essentials: results.data.essentials.split(',')
         })
       })
       .catch((err) => {

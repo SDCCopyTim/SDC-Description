@@ -2,13 +2,9 @@ const models = require('../database/models.js');
 
 const controllers = {
   getOne: (req, res) => {
-    models.getOne(req.params.id, (err, results) => {
-      if (err) {
-        res.status(400).send(err);
-      } else {
-        res.status(200).json(results);
-      }
-    })
+    models.getOne(req.params.id)
+      .then(results => res.status(200).json(results))
+      .catch(err => res.status(400).send(err));
   },
 
   addOne: (req, res) => {
