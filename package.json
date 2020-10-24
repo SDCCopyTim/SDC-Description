@@ -7,8 +7,9 @@
     "test": "jest",
     "seed": "node database/seed.js",
     "build:dev": "webpack -d --watch",
-    "start": "nodemon server/index.js",
-    "start:dev": "nodemon server/index.js -w server -w database-mysql"
+    "build:prod": "webpack -p",
+    "start": "node server/index.js",
+    "start:dev": "nodemon server/index.js"
   },
   "repository": {
     "type": "git",

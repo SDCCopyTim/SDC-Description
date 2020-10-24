@@ -46,7 +46,7 @@ const cancellationList = ['Easy', 'Moderate', 'Difficult', 'None'];
 
 // Create 10 million records
 const writeRecords = fs.createWriteStream('records.csv');
-writeRecords.write('id,States,Farms,Camps,minimumNights,acceptsBookings,checkIn,checkOut,onArrival,costs,description,review,responses,recommended,Parks,Lodging,Essentials,Amentities,Owners,photosofResponsers,cancellation,checkmark\n', 'utf8');
+writeRecords.write('id,States,Farms,Camps,minimumNights,acceptsBookings,checkIn,checkOut,onArrival,costs,description,responses,recommended,Parks,Lodging,Essentials,Amentities,Owners,photosofResponsers,cancellation,checkmark\n', 'utf8');
 
 function writeTenMillionRecords(writer, encoding, callback) {
   let i = 10000000;
@@ -67,7 +67,6 @@ function writeTenMillionRecords(writer, encoding, callback) {
       const onArrival = `${onArrivalList[Math.floor(Math.random() * Math.floor(onArrivalList.length))]}`;
       const costs = `${faker.random.number()}`;
       const description = `${faker.lorem.paragraph()}`;
-      const review = `${faker.lorem.paragraph()}`;
       const responses = `+${faker.random.number()}`;
       const recommended = `${Math.ceil(Math.random() * Math.ceil(100))}%`;
       const Parks = `${faker.random.word()} Park, ${faker.random.word()} ${faker.random.word()} Park`;
@@ -79,7 +78,7 @@ function writeTenMillionRecords(writer, encoding, callback) {
       const cancellation = `${cancellationList[Math.floor(Math.random() * Math.floor(cancellationList.length))]}`;
       const checkmark = `${faker.random.boolean()}`;
 
-      const data = `${campId},"${state}","${farm}","${camp}","${minimumNights}","${acceptsBookings}","${checkIn}","${checkOut}","${onArrival}",${costs},"${description}","${review}","${responses}","${recommended}","${Parks}","${Lodging}","${Essentials}","${Amentities}",${Owners},"${photosOfResponsers}","${cancellation}","${checkmark}"\n`;
+      const data = `${campId},"${state}","${farm}","${camp}","${minimumNights}","${acceptsBookings}","${checkIn}","${checkOut}","${onArrival}",${costs},"${description}","${responses}","${recommended}","${Parks}","${Lodging}","${Essentials}","${Amentities}","${Owners}","${photosOfResponsers}","${cancellation}","${checkmark}"\n`;
 
       if (i === 0) {
         writer.write(data, encoding, callback);
