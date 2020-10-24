@@ -1,23 +1,12 @@
-const db = require('./index.js');
+const db = require('./pg.index.js');
 
 const models = {
-  getOne: (id, callback) => {
-    db.query(`SELECT * FROM CampSites WHERE id = ${id}`, (err, results) => {
-      if (err) {
-        callback(err);
-      } else {
-        callback(null, results);
-      }
-    })
-  },
-
-  getAll: (callback) => {
-    db.query(`SELECT * From CampSites`, (err, results) => {
-      if (err) {
-        callback(err);
-      } else {
-        callback(null, results);
-      }
+  getOne: (id) => {
+    return new Promise((resolve, reject) => {
+      db
+        .query(`SELECT * FROM CampSites WHERE id = ${id}`)
+        .then(res => resolve(res.rows[0]))
+        .catch(e => reject(e.stack));
     })
   },
 
@@ -33,7 +22,6 @@ const models = {
       onArrival,
       costs,
       description,
-      review,
       responses,
       recommended,
       Parks,
@@ -46,7 +34,7 @@ const models = {
       checkmark
     } = data
 
-    db.query(`INSERT INTO CampSites (States, Farms, Camps, minimumNights, acceptsBookings, checkIn, checkOut, onArrival, costs, description, review, responses, recommended, Parks, Lodging, Essentials, Amentities, Owners, photosofResponsers, cancellation, checkmark) VALUES ("${States}", "${Farms}", "${Camps}", "${minimumNights}", "${acceptsBookings}", "${checkIn}", "${checkOut}", "${onArrival}", ${costs}, "${description}", "${review}", "${responses}", "${recommended}", "${Parks}", "${Lodging}", "${Essentials}", "${Amentities}", "${Owners}", "${photosofResponsers}", "${cancellation}", "${checkmark}")`, (err, results) => {
+    db.query(`INSERT INTO CampSites (States, Farms, Camps, minimumNights, acceptsBookings, checkIn, checkOut, onArrival, costs, description, responses, recommended, Parks, Lodging, Essentials, Amentities, Owners, photosofResponsers, cancellation, checkmark) VALUES ("${States}", "${Farms}", "${Camps}", "${minimumNights}", "${acceptsBookings}", "${checkIn}", "${checkOut}", "${onArrival}", ${costs}, "${description}", "${responses}", "${recommended}", "${Parks}", "${Lodging}", "${Essentials}", "${Amentities}", "${Owners}", "${photosofResponsers}", "${cancellation}", "${checkmark}")`, (err, results) => {
         if (err) {
           callback(err);
         } else {
