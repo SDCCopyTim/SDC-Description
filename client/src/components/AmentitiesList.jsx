@@ -1,8 +1,5 @@
 import React from 'react';
-import { FaWater } from "react-icons/fa";
-import { FaShower } from "react-icons/fa";
-import { FaWifi } from "react-icons/fa";
-import { FaUtensils } from "react-icons/fa";
+import { FaWater, FaShower, FaWifi, FaUtensils } from "react-icons/fa";
 import { BiWifiOff } from "react-icons/bi";
 
 

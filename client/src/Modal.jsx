@@ -1,6 +1,5 @@
 import React from 'react';
-import { AiFillApple } from "react-icons/ai";
-import { AiFillFacebook } from "react-icons/ai";
+import { AiFillApple, AiFillFacebook } from "react-icons/ai";
 import Zoom from 'react-reveal/Zoom';
 
 

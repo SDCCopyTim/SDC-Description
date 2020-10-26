@@ -1,7 +1,6 @@
 import React from 'react';
-import { FaVihara } from "react-icons/fa";
+import { FaVihara, FaBed } from "react-icons/fa";
 import { BiWalk } from "react-icons/bi";
-import { FaBed } from "react-icons/fa";
 import { GrWheelchairActive } from "react-icons/gr";
 import { GiForestCamp } from "react-icons/gi";
 

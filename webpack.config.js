@@ -2,7 +2,8 @@ const path = require('path');
 
 
 module.exports = {
-    mode: 'development',
+    mode: 'production',
+    devtool: 'none',
     entry: path.resolve(__dirname, './client/src'),
     output: {
       path: path.resolve(__dirname, './client/public'),

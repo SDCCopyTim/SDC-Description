@@ -7,23 +7,14 @@ import Modal from './Modal.jsx';
 import LodgingModal from './LodgingModal.jsx';
 import EssentialsModal from './EssentialsModal.jsx';
 import AmentitiesModal from './AmentitiesModal.jsx';
-import { FaCamera } from "react-icons/fa";
-import { MdShare } from "react-icons/md"
-import { FaThumbsUp } from "react-icons/fa";
+import { FaCamera, FaThumbsUp, FaCheckCircle, FaLinkedin, FaFacebookMessenger, FaTumblr } from "react-icons/fa";
+import { MdShare, MdEmail } from "react-icons/md"
 import { BsChevronBarDown } from "react-icons/bs";
-import { FaCheckCircle } from "react-icons/fa";
 import { ImCheckmark } from "react-icons/im";
-import { AiFillFacebook } from "react-icons/ai";
-import { AiFillTwitterSquare } from "react-icons/ai";
+import { AiFillFacebook, AiFillTwitterSquare } from "react-icons/ai";
 import { RiPinterestFill } from "react-icons/ri";
-import { MdEmail } from "react-icons/md";
-import { FaLinkedin } from "react-icons/fa";
-import { SiReddit } from "react-icons/si";
-import { FaFacebookMessenger } from "react-icons/fa";
-import { FaTumblr } from "react-icons/fa";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import Zoom from 'react-reveal/Zoom';
 import ReactTooltip from 'react-tooltip';
 import moment from 'moment';
 
@@ -79,7 +70,7 @@ class App extends React.Component {
       month: this.state.today.getMonth(),
       year: this.state.today.getFullYear()
     })
-    axios.get(`http://localhost:3002/one/${this.state.id}`)
+    axios.get(`/one/${this.state.id}`)
       .then((results) => {
         console.log(results);
         this.setState({

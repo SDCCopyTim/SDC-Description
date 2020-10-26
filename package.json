@@ -7,7 +7,7 @@
     "test": "jest",
     "seed": "node database/seed.js",
     "build:dev": "webpack -d --watch",
-    "build:prod": "webpack -p",
+    "build:prod": "export NODE_OPTIONS=--max-old-space-size=850 && webpack -p --progress",
     "start": "node server/index.js",
     "start:dev": "nodemon server/index.js"
   },
@@ -28,17 +28,9 @@
     "@react-native-community/datetimepicker": "^3.0.3",
     "@webpack-cli/init": "^0.3.0",
     "axios": "^0.18.0",
-    "bluebird": "^3.5.3",
     "body-parser": "^1.17.2",
-    "cors": "^2.8.5",
     "express": "^4.15.4",
-    "faker": "^5.1.0",
-    "framer-motion": "^2.7.7",
-    "hover.css": "^2.3.2",
-    "jquery": "^3.2.1",
     "moment": "^2.29.1",
-    "mongoose": "^5.10.9",
-    "mysql": "^2.14.1",
     "newrelic": "^6.13.2",
     "pg": "^8.4.1",
     "react": "^16.8.5",
@@ -50,9 +42,7 @@
     "react-reveal": "^1.2.2",
     "react-test-renderer": "^16.13.1",
     "react-tooltip": "^4.2.10",
-    "simple-react-calendar": "^2.2.8",
-    "underscore": "^1.8.3",
-    "webpack": "^4.44.2"
+    "simple-react-calendar": "^2.2.8"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
@@ -65,9 +55,6 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^4.3.0",
     "jest": "^26.5.0",
-    "morgan": "^1.10.0",
-    "nodemon": "^1.19.2",
-    "webpack": "^4.41.0",
     "webpack-cli": "^3.3.9"
   }
 }

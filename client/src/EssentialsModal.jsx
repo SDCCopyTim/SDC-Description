@@ -1,9 +1,7 @@
 import React from 'react';
-import { FaFireAlt } from "react-icons/fa";
-import { FaToilet } from "react-icons/fa";
+import { FaFireAlt, FaToilet } from "react-icons/fa";
 import { SiBaidu } from "react-icons/si";
-import { GiShower } from "react-icons/gi";
-import { GiFoodTruck } from "react-icons/gi";
+import { GiShower, GiFoodTruck } from "react-icons/gi";
 
 
 
