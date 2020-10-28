@@ -4,6 +4,7 @@ const controllers = require('./controllers.js');
 
 router
   .route('/one')
+  .get(controllers.getRandom)
   .post(controllers.addOne)
 
   router
