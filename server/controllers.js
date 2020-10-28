@@ -14,7 +14,7 @@ const controllers = {
     models.getOne(num)
       .then(results => res.status(200).json(results))
       .catch(err => res.status(400).send(err));
-  }
+  },
 
   addOne: (req, res) => {
     models.addOne(req.body, (err, results) => {

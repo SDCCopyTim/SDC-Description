@@ -13,6 +13,7 @@ import { BsChevronBarDown } from "react-icons/bs";
 import { ImCheckmark } from "react-icons/im";
 import { AiFillFacebook, AiFillTwitterSquare } from "react-icons/ai";
 import { RiPinterestFill } from "react-icons/ri";
+import { SiReddit } from "react-icons/si";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import ReactTooltip from 'react-tooltip';
