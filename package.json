@@ -7,8 +7,9 @@
     "test": "jest",
     "seed": "node database/seed.js",
     "build:dev": "webpack -d --watch",
-    "start": "nodemon server/index.js",
-    "start:dev": "nodemon server/index.js -w server -w database-mysql"
+    "build:prod": "webpack -p",
+    "start": "node server/index.js",
+    "start:dev": "nodemon server/index.js"
   },
   "repository": {
     "type": "git",
@@ -31,11 +32,15 @@
     "body-parser": "^1.17.2",
     "cors": "^2.8.5",
     "express": "^4.15.4",
+    "faker": "^5.1.0",
     "framer-motion": "^2.7.7",
     "hover.css": "^2.3.2",
     "jquery": "^3.2.1",
     "moment": "^2.29.1",
+    "mongoose": "^5.10.9",
     "mysql": "^2.14.1",
+    "newrelic": "^6.13.2",
+    "pg": "^8.4.1",
     "react": "^16.8.5",
     "react-calendar": "^3.1.0",
     "react-date-picker": "^8.0.3",
@@ -60,6 +65,7 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^4.3.0",
     "jest": "^26.5.0",
+    "morgan": "^1.10.0",
     "nodemon": "^1.19.2",
     "webpack": "^4.41.0",
     "webpack-cli": "^3.3.9"

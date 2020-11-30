@@ -12,8 +12,4 @@ router
   .put(controllers.updateOne)
   .delete(controllers.deleteOne)
 
-router
-  .route('/all')
-  .get(controllers.getAll)
-
 module.exports = router;
