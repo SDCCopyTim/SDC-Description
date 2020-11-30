@@ -34,37 +34,44 @@ The goal of this project is to build a scalable RESTful API service built for an
 <details>
 <summary>500 client requests per second</summary>
 <br>
-![loader.io graph](benchmarks/local/defaultConfig/500rpsavgmedian.png)
+
+![Loader.io graph](/benchmarks/local/defaultConfig/500rpsavgmedian.png)
 </details>
 
 <details>
 <summary>1000 client requests per second</summary>
 <br>
-![loader.io graph](benchmarks/local/defaultConfig/1000rpsavgmedian.png)
+
+![Loader.io graph](/benchmarks/local/defaultConfig/1000rpsavgmedian.png)
+
 </details>
 
 <details>
 <summary>1000/RPS Modify DB Max Connections from 100 -> 1000 </summary>
 <br>
-![loader.io graph](benchmarks/local/1000-2000maxconnection.png)
+
+![Loader.io graph](/benchmarks/local/1000-2000maxconnection.png)
 </details>
 
 <details>
 <summary>1000/RPS Move Express Serve Index.html below api routes </summary>
 <br>
-![loader.io graph](benchmarks/local/1000static.png)
+
+![Loader.io graph](/benchmarks/local/1000static.png)
 </details>
 
 <details>
 <summary>1000/RPS Convert database request functions to asynchronous </summary>
 <br>
-![loader.io graph](benchmarks/local/1000async.png)
+
+![Loader.io graph](/benchmarks/local/1000async.png)
 </details>
 
 <details>
 <summary>1000/RPS Close unnecessary running processes in machine (Slack, Zoom, etc.) </summary>
 <br>
-![loader.io graph](benchmarks/local/1000rps38ms.png)
+
+![Loader.io graph](/benchmarks/local/1000rps38ms.png)
 </details>
 
 ## Load Testing on AWS EC2 T2 Micro Instances
@@ -74,19 +81,22 @@ The goal of this project is to build a scalable RESTful API service built for an
 <details>
 <summary>400 client requests per second</summary>
 <br>
-![loader.io graph](benchmarks/service/service-only/400Loader.png)
+
+![Loader.io graph](/benchmarks/service/service-only/400Loader.png)
 </details>
 
 <details>
 <summary>600 client requests per second</summary>
 <br>
-![loader.io graph](benchmarks/service/service-only/600Loader.png)
+
+![Loader.io graph](/benchmarks/service/service-only/600Loader.png)
 </details>
 
 <details>
 <summary>1000 client requests per second</summary>
 <br>
-![loader.io graph](benchmarks/service/no-cache/random/1000rps.png)
+
+![Loader.io graph](/benchmarks/service/no-cache/random/1000rps.png)
 </details>
 
 ### Requests on One ID
@@ -94,31 +104,36 @@ The goal of this project is to build a scalable RESTful API service built for an
 <details>
 <summary>1000/RPS | 2 services</summary>
 <br>
-![loader.io graph](benchmarks/service/no-cache/one-id/1000rps.png)
+
+![Loader.io graph](/benchmarks/service/no-cache/one-id/1000rps.png)
 </details>
 
 <details>
 <summary>2000/RPS | 2 services</summary>
 <br>
-![loader.io graph](benchmarks/service/no-cache/one-id/2000rps-2services.png)
+
+![Loader.io graph](/benchmarks/service/no-cache/one-id/2000rps-2services.png)
 </details>
 
 <details>
 <summary>2000/RPS | 3 services</summary>
 <br>
-![loader.io graph](benchmarks/service/no-cache/one-id/2000rps-3services.png)
+
+![Loader.io graph](/benchmarks/service/no-cache/one-id/2000rps-3services.png)
 </details>
 
 <details>
 <summary>2000/RPS | 4 services</summary>
 <br>
-![loader.io graph](benchmarks/service/no-cache/one-id/2000rps-4services.png)
+
+![Loader.io graph](/benchmarks/service/no-cache/one-id/2000rps-4services.png)
 </details>
 
 <details>
 <summary>2000/RPS | 5 services</summary>
 <br>
-![loader.io graph](benchmarks/service/no-cache/one-id/2500rps-5services.png)
+
+![Loader.io graph](/benchmarks/service/no-cache/one-id/2500rps-5services.png)
 </details>
 
 ### Reverse Proxy Caching | Least Connections
@@ -126,19 +141,22 @@ The goal of this project is to build a scalable RESTful API service built for an
 <details>
 <summary>2000/RPS | 2 services</summary>
 <br>
-![loader.io graph](benchmarks/service/cached/one-id/2000rps-cached.png)
+
+![Loader.io graph](/benchmarks/service/cached/one-id/2000rps-cached.png)
 </details>
 
 <details>
 <summary>5000/RPS | 2 services</summary>
 <br>
-![loader.io graph](benchmarks/service/cached/one-id/5000rps-cached.png)
+
+![Loader.io graph](/benchmarks/service/cached/one-id/5000rps-cached.png)
 </details>
 
 <details>
 <summary>10000/RPS | 1 service</summary>
 <br>
-![loader.io graph](benchmarks/service/cached/one-id/10000rps-cached-1service.png)
+
+![Loader.io graph](/benchmarks/service/cached/one-id/10000rps-cached-1service.png)
 </details>
 
 ## Instructions
